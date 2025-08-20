@@ -10,6 +10,7 @@ import thum5 from '../../assets/articeles/5.png';
 import thum6 from '../../assets/articeles/6.png';
 import thum7 from '../../assets/articeles/7.png';
 import thum8 from '../../assets/articeles/8.png';
+import thum9 from '../../assets/articeles/9.jpg';
 
 
 const Articeles = () => {
@@ -71,9 +72,16 @@ const Articeles = () => {
     {
       id: 8,
       title: "Mulkanoor Cooperative Society’s impact on the agrarian community- Article featured on RURAL MODELS.",
-      date: "November 19th",
+      date: "November 19, 2024",
       pdfFile: "https://drive.google.com/file/d/1hE-eqDvcW0QZNmS7c82Gfv9d_geHKoQP/view?usp=sharing",
       thumbnail: thum8,
+    },
+    {
+      id: 9,
+      title: "A landmark moment – Mulkanoor Cooperative Society plays a pivotal role in shaping the New National Cooperative Policy 2025 – with President Shri AligiReddy Praveen Reddy serving as a proud member of the 40-member National Drafting Committee.",
+      date: "July 24, 2025",
+      pdfFile: "https://www.cooperation.gov.in/sites/default/files/2025-07/NCP%28Eng%29_24Jul2025_Final.pdf",
+      thumbnail: thum9,
     },
   ];
 
@@ -125,7 +133,7 @@ const Articeles = () => {
       {/* Articles Grid */}
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articles.map((article, index) => (
+          {articles.reverse().map((article, index) => (
             <motion.div
               key={article.id}
               initial={{ opacity: 0, y: 20 }}
