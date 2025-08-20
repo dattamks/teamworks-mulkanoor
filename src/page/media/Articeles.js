@@ -21,14 +21,14 @@ const Articeles = () => {
     {
       id: 1,
       title: "The Story of Mulkanoor Cooperative Society- A Special Feature in the Esteemed Labour & Industrial Chronicle.",
-      date: "June 30, 1981",
+      date: "June 1981",
       pdfFile: "https://drive.google.com/file/d/1PQOwnNdTI_SValGcoqRmsgHg399nGFhc/view?usp=sharing",
       thumbnail: thum1,
     },
     {
       id: 2,
       title: "Mulkanoor Cooperative Society Featured in India Today – A Celebrated Story of Rural Transformation and Trust.",
-      date: "August 1-15, 1981",
+      date: "August 1981",
       pdfFile: "https://drive.google.com/file/d/1e-MsrKwApBdemfpLMt2cv4U5R80-8mQx/view?usp=sharing",
       thumbnail: thum2,
 
@@ -36,7 +36,7 @@ const Articeles = () => {
     {
       id: 3,
       title: "Mulkanoor Cooperative Society Featured in 'The Cooperator' for its inspiring Success Story.",
-      date: "15th August 1981",
+      date: "August 1981",
       pdfFile: "https://drive.google.com/file/d/1zypmSkg0qqhXSA2djSMXjUZThg4yqJgx/view?usp=sharing",
       thumbnail: thum3,
     },
@@ -64,7 +64,7 @@ const Articeles = () => {
     {
       id: 7,
       title: "Mulkanoor Cooperative society to the rescue of drought-ridden villages in Karimnagar- Article featured on THE HINDU.",
-      date: "May-2016",
+      date: "May 2016",
       author: "Ramesh Kumar",
       pdfFile: "https://drive.google.com/file/d/1QJ361EZLMIcoiF7HEv1DuxyUcN4WzyHB/view?usp=sharing",
       thumbnail: thum7,
@@ -72,14 +72,14 @@ const Articeles = () => {
     {
       id: 8,
       title: "Mulkanoor Cooperative Society’s impact on the agrarian community- Article featured on RURAL MODELS.",
-      date: "November 19, 2024",
+      date: "November 2024",
       pdfFile: "https://drive.google.com/file/d/1hE-eqDvcW0QZNmS7c82Gfv9d_geHKoQP/view?usp=sharing",
       thumbnail: thum8,
     },
     {
       id: 9,
       title: "A landmark moment – Mulkanoor Cooperative Society plays a pivotal role in shaping the New National Cooperative Policy 2025 – with President Shri AligiReddy Praveen Reddy serving as a proud member of the 40-member National Drafting Committee.",
-      date: "July 24, 2025",
+      date: "July 2025",
       pdfFile: "https://www.cooperation.gov.in/sites/default/files/2025-07/NCP%28Eng%29_24Jul2025_Final.pdf",
       thumbnail: thum9,
     },
