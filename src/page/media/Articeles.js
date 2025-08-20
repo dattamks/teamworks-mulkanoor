@@ -65,7 +65,7 @@ const Articeles = () => {
       id: 7,
       title: "Mulkanoor Cooperative society to the rescue of drought-ridden villages in Karimnagar- Article featured on THE HINDU.",
       date: "May 2016",
-      author: "Ramesh Kumar",
+      // author: "Ramesh Kumar",
       pdfFile: "https://drive.google.com/file/d/1QJ361EZLMIcoiF7HEv1DuxyUcN4WzyHB/view?usp=sharing",
       thumbnail: thum7,
     },
