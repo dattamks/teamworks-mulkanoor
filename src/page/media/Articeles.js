@@ -11,6 +11,7 @@ import thum6 from '../../assets/articeles/6.png';
 import thum7 from '../../assets/articeles/7.png';
 import thum8 from '../../assets/articeles/8.png';
 import thum9 from '../../assets/articeles/9.jpg';
+import thum10 from '../../assets/articeles/10.png';
 
 
 const Articeles = () => {
@@ -24,6 +25,7 @@ const Articeles = () => {
       date: "June 1981",
       pdfFile: "https://drive.google.com/file/d/1PQOwnNdTI_SValGcoqRmsgHg399nGFhc/view?usp=sharing",
       thumbnail: thum1,
+      type:"pdf",
     },
     {
       id: 2,
@@ -31,6 +33,7 @@ const Articeles = () => {
       date: "August 1981",
       pdfFile: "https://drive.google.com/file/d/1e-MsrKwApBdemfpLMt2cv4U5R80-8mQx/view?usp=sharing",
       thumbnail: thum2,
+      type:"pdf",
 
     },
     {
@@ -39,6 +42,7 @@ const Articeles = () => {
       date: "August 1981",
       pdfFile: "https://drive.google.com/file/d/1zypmSkg0qqhXSA2djSMXjUZThg4yqJgx/view?usp=sharing",
       thumbnail: thum3,
+      type:"pdf",
     },
     {
       id: 4,
@@ -46,6 +50,7 @@ const Articeles = () => {
       date: "October 1981",
       pdfFile: "https://drive.google.com/file/d/1Cr5VOLoe9ksMfpv_L_iar8ojfh4qxWhz/view?usp=sharing",
       thumbnail: thum4,
+      type:"pdf",
     },
     {
       id: 5,
@@ -53,6 +58,7 @@ const Articeles = () => {
       date: "January 1982",
       pdfFile: "https://drive.google.com/file/d/1rK-RuIStA2k6-KLaoeAZ-Om2j9z8P-YG/view?usp=sharing",
       thumbnail: thum5,
+      type:"pdf",
     },
     {
       id: 6,
@@ -60,6 +66,7 @@ const Articeles = () => {
       date: "July 2014",
       pdfFile: "https://drive.google.com/file/d/1r2hQUFgnIIkEOgl7SBhlmaXncBeLZOsw/view?usp=sharing",
       thumbnail: thum6,
+      type:"pdf",
     },
     {
       id: 7,
@@ -68,6 +75,7 @@ const Articeles = () => {
       // author: "Ramesh Kumar",
       pdfFile: "https://drive.google.com/file/d/1QJ361EZLMIcoiF7HEv1DuxyUcN4WzyHB/view?usp=sharing",
       thumbnail: thum7,
+      type:"pdf",
     },
     {
       id: 8,
@@ -75,6 +83,7 @@ const Articeles = () => {
       date: "November 2024",
       pdfFile: "https://drive.google.com/file/d/1hE-eqDvcW0QZNmS7c82Gfv9d_geHKoQP/view?usp=sharing",
       thumbnail: thum8,
+      type:"pdf",
     },
     {
       id: 9,
@@ -82,6 +91,15 @@ const Articeles = () => {
       date: "July 2025",
       pdfFile: "https://www.cooperation.gov.in/sites/default/files/2025-07/NCP%28Eng%29_24Jul2025_Final.pdf",
       thumbnail: thum9,
+      type:"pdf",
+    },
+    {
+      id: 10,
+      title: "Mulkanoor Cooperative : A Model of Visionary Leadership and Good Governance - HINDUDAYASANKAR MAGAZINE",
+      date: "Sept 2025",
+      pdfFile: "https://hindudayashankar.com/agriculture/mulkanoor-cooperative-a-model-of-visionary-leadership-and-good-governance/",
+      thumbnail: thum10,
+      type:"artical",
     },
   ];
 
@@ -165,6 +183,8 @@ const Articeles = () => {
                 <p className="text-sm text-gray-600 flex-1">{article.description}</p>
                 
                 {/* Action Buttons */}
+                { article.type === "pdf" 
+                ? 
                 <div className="flex justify-between items-center mt-4 pt-3 border-t border-gray-100">
                   <button 
                     className="flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-green-200 transition-colors"
@@ -173,6 +193,15 @@ const Articeles = () => {
                     <FaDownload className="text-xs" /> Download PDF
                   </button>
                 </div>
+                :
+                <div className="flex justify-between items-center mt-4 pt-3 border-t border-gray-100">
+                  <a href={article.pdfFile} target='_blank'>
+                  <button 
+                    className="flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-green-200 transition-colors"
+                  >Read More
+                  </button></a>
+                </div>
+                }
               </div>
             </motion.div>
           ))}
