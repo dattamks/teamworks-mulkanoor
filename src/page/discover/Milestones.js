@@ -155,7 +155,7 @@ const Milestones = () => {
 
     const timelineData = [
         {
-            year: "1956-1960",
+            year: "1956-60",
             title: "Foundation & Early Growth",
             description: "Formation of the society with 373 members and ₹2,300 share capital. Introduced electrification and pump sets for agricultural development.",
             image: year1956,
@@ -169,7 +169,7 @@ const Milestones = () => {
             details: "The foundational years saw farmers uniting to create a cooperative that would transform agriculture in the region through collective effort and financial support."
         },
         {
-            year: "1961-1965",
+            year: "1961-65",
             title: "Innovation & Diversification",
             description: "Introduced hybrid seeds, pledge loans, and expanded into rice milling. Member deposits crossed ₹1 lakh milestone.",
             image: year1963,
@@ -183,7 +183,7 @@ const Milestones = () => {
             details: "This period marked significant agricultural innovation with the introduction of modern farming techniques and diversified financial services."
         },
         {
-            year: "1966-1970",
+            year: "1966-70",
             title: "Processing & Infrastructure",
             description: "Major expansion in agro-processing with rice and oil mills. Enhanced staff mobility and irrigation infrastructure development.",
             image: year1968,
@@ -197,7 +197,7 @@ const Milestones = () => {
             details: "Focused on building robust infrastructure for processing and expanding reach to better serve farming communities."
         },
         {
-            year: "1971-1975",
+            year: "1971-75",
             title: "Mechanization & Diversification",
             description: "Comprehensive agricultural mechanization with tractors, lathe machines, and expansion into dairy and poultry sectors.",
             image: year1972,
@@ -212,7 +212,7 @@ const Milestones = () => {
             details: "Revolutionary period that brought modern machinery and livestock development to transform rural agriculture comprehensively."
         },
         {
-            year: "1976-1980",
+            year: "1976-80",
             title: "Technology & Welfare Expansion",
             description: "Advanced seed processing technology from Germany, livestock breeding, and expansion into insurance services.",
             image: year1977,
@@ -227,7 +227,7 @@ const Milestones = () => {
             details: "Period of technological advancement and welfare expansion, establishing the cooperative as a comprehensive rural development agency."
         },
         {
-            year: "1981-1985",
+            year: "1981-85",
             title: "Silver Jubilee & Infrastructure Boom",
             description: "25th anniversary celebrations with major infrastructure development including parboiled rice mill and expanded storage facilities.",
             image: year1984,
@@ -242,7 +242,7 @@ const Milestones = () => {
             details: "Milestone period celebrating 25 years of success while significantly expanding infrastructure and community services."
         },
         {
-            year: "1986-1990",
+            year: "1986-90",
             title: "Modernization & Community Welfare",
             description: "Generator installation, welfare schemes introduction, and expansion into fruit marketing with community health initiatives.",
             image: year1989,
@@ -257,7 +257,7 @@ const Milestones = () => {
             details: "Focus shifted to community welfare and health while expanding market operations and honoring leadership legacy."
         },
         {
-            year: "1991-1995",
+            year: "1991-95",
             title: "Financial Innovation & Storage Expansion",
             description: "Financial year restructuring, comprehensive insurance coverage, and advanced irrigation technology implementation.",
             image: year1995,
@@ -287,7 +287,7 @@ const Milestones = () => {
             details: "Major regulatory and technological transformation period, embracing modern governance and digital operations."
         },
         {
-            year: "2001-2005",
+            year: "2001-05",
             title: "Education & Sustainable Development",
             description: "Established educational institutions, promoted renewable energy, and received national recognition for cooperative excellence.",
             image: year2004,
@@ -302,7 +302,7 @@ const Milestones = () => {
             details: "Comprehensive rural development through education, sustainable energy, and women's empowerment initiatives."
         },
         {
-            year: "2006-2010",
+            year: "2006-10",
             title: "Golden Jubilee & Quality Certification",
             description: "50th anniversary celebrations with ISO certification, digital transformation, and enhanced healthcare services.",
             image: year2006,
@@ -317,7 +317,7 @@ const Milestones = () => {
             details: "Golden jubilee marked by quality certification, digital presence, and significant community health contributions."
         },
         {
-            year: "2011-2015",
+            year: "2011-15",
             title: "Global Recognition & Solar Innovation",
             description: "World Agriculture Forum keynote, NCDC National Award, and pioneering solar power adoption in cooperative sector.",
             image: year2014,
@@ -332,7 +332,7 @@ const Milestones = () => {
             details: "Period of global recognition and leadership in sustainable energy adoption within the cooperative movement."
         },
         {
-            year: "2016-2020",
+            year: "2016-20",
             title: "Large-Scale Solar & Infrastructure",
             description: "Major solar power plant installation, modern rice mill setup, and expanded retail operations with elderly welfare programs.",
             image: year2019,
@@ -525,7 +525,7 @@ const Milestones = () => {
                                     transition={{ delay: index * 0.1 }}
                                 >
                                     <div className={`
-                                        w-10 h-10 md:w-14 md:h-14 lg:w-20 lg:h-20 rounded-full 
+                                        w-10 h-10 md:w-14 md:h-14 lg:w-[10rem] lg:h-20 rounded-full 
                                         flex items-center cursor-pointer justify-center
                                         ${activeIndex === index
                                             ? 'bg-white/30 shadow-lg shadow-white/20'
@@ -535,14 +535,15 @@ const Milestones = () => {
                                         transition-all duration-300
                                     `}>
                                         <span className={`
-                                            text-sm md:text-xl lg:text-2xl font-bold
+                                            text-sm md:text-xl lg:text-xl font-bold
                                             ${activeIndex === index
                                                 ? 'text-white'
                                                 : activeIndex > index
                                                     ? 'text-white/70'
                                                     : 'text-white/60'}
                                         `}>
-                                            {item.year.split('-')[0]}
+                                            {/* {item.year.split('-')[0]} */}
+                                            {item.year}
                                         </span>
                                     </div>
                                     <h3 className={`
