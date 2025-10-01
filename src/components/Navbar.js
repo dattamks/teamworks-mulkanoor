@@ -95,6 +95,7 @@ const Navbar = () => {
             title: 'Discover Us',
             path: '#about',
             submenu: [
+                { title: 'Anniversary', path: '/anniversary' },
                 { title: 'Our Story', path: '/discover/story' },
                 { title: 'Mission & Vision', path: '/discover/mission' },
                 { title: 'Leadership', path: '/discover/leadership' },

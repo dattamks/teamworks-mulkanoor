@@ -38,6 +38,7 @@ import Paper from "./page/media/Paper";
 import Report from "./page/Report";
 import Processing from "./page/Processing";
 import Consumer from "./page/Consumer";
+import Anniversary from "./page/Anniversary";
 
 // Create a ScrollToTop component
 function ScrollToTop() {
@@ -52,12 +53,13 @@ function ScrollToTop() {
 
 function AppContent() {
   const isLoading = usePageLoading();
-
+  const location =useLocation();
+  const hideLayout = location.pathname === "/anniversary"
   return (
     <>
       {isLoading && <Loading />}
       <ScrollToTop />
-      <Navbar />
+      {!hideLayout && <Navbar />}
       <div className="min-h-screen">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -92,10 +94,11 @@ function AppContent() {
           <Route path="/media/paper" element={<Paper />} />
           <Route path='/report' element={<Report />} />
           <Route path="/consumer" element={<Consumer />} />
+          <Route path="/anniversary" element={<Anniversary />} />
           <Route path="*" element={<div className="text-center mt-20">404 Not Found</div>} />
         </Routes>
       </div>
-      <Footer />
+      {!hideLayout && <Footer />}
     </>
   );
 }
