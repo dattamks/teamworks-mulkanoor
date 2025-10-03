@@ -140,7 +140,7 @@ function Anniversary(){
         setCurrent((prev) => prev === 0 ? length - 1 : prev - 1)
     }
     useEffect(() => {
-        const interval = current === 0 ? 1200000 : 1000;
+        const interval = current === 0 ? 12000 : 1000;
         const timer = setInterval(() => {
             nextSlide()
         },interval)
@@ -264,7 +264,7 @@ useEffect(() => {
     useEffect(() => {
         const timer = setInterval(() => {
             setTransIndex((prev) => prev >= transEffects.length - transVisibleSlide ? 0 : prev + 1)
-        },300000)
+        },3000)
         return () => clearInterval(timer)
     },[transVisibleSlide])
 
