@@ -1167,20 +1167,28 @@ useEffect(() => {
                     ? 
                     <div className='slide-text'>
                         <h2 className={heroAnimation ? 'animate-slide-text-h2' : ''}>{slides[current].text_1}</h2>
-                        <h1 className="animated-text">
-  {slides[current].text_2.split(" ").map((word, wordIndex) => (
-    <span key={wordIndex} style={{ display: "inline-block", marginRight: "0.25em" }}>
-      {word.split("").map((char, charIndex) => (
-        <span
-          key={charIndex}
-          style={{ animationDelay: `${(wordIndex * word.length + charIndex) * 0.2}s` }}
-        >
-          {char}
-        </span>
-      ))}
-    </span>
-  ))}
+<h1 className="animated-text">
+  {slides[current].text_2.split(" ").map((word, wordIndex, arr) => {
+    // Count total chars before this word
+    const charsBefore = arr
+      .slice(0, wordIndex)
+      .reduce((sum, w) => sum + w.length, 0) + wordIndex; // + wordIndex for spaces
+
+    return (
+      <span key={wordIndex} style={{ display: "inline-block", marginRight: "0.25em" }}>
+        {word.split("").map((char, charIndex) => (
+          <span
+            key={charIndex}
+            style={{ animationDelay: `${(charsBefore + charIndex) * 0.2}s` }}
+          >
+            {char}
+          </span>
+        ))}
+      </span>
+    );
+  })}
 </h1>
+
 
                         <p className='animate-rightleft'>{slides[current].text_3}</p>
                         <button className='animate-downup'>68 Years of Imapact</button>
