@@ -140,7 +140,7 @@ function Anniversary(){
         setCurrent((prev) => prev === 0 ? length - 1 : prev - 1)
     }
     useEffect(() => {
-        const interval = current === 0 ? 12000 : 1000;
+        const interval = current === 0 ? 1200000 : 1000;
         const timer = setInterval(() => {
             nextSlide()
         },interval)
@@ -1071,6 +1071,13 @@ useEffect(() => {
                     }
                 }
                 @media(max-width:768px){
+                
+                    #hero{
+                        height:500px;
+                    }
+                    .slider{
+                        height:500px;
+                    }
                     .slide-text h2{
                         font-size:42px;
                         line-height:2.4;
@@ -1094,6 +1101,12 @@ useEffect(() => {
                         font-size:30px;
                     }
                 }
+                .animated-text {
+                    display: inline-block;
+                    white-space: pre-wrap; /* allow wrapping at normal spaces only */
+                    word-break: normal;    /* do not break words */
+                }
+
             .animated-text span {
                 opacity: 0;
                 display: inline-block;
@@ -1154,9 +1167,21 @@ useEffect(() => {
                     ? 
                     <div className='slide-text'>
                         <h2 className={heroAnimation ? 'animate-slide-text-h2' : ''}>{slides[current].text_1}</h2>
-                        <h1 className="animated-text">{slides[current].text_2.split("").map((char, index) => (
-                            <span key={index} style={{animationDelay:`${index * 0.2}s`}}>{char === " " ? "\u00A0" : char}</span>
-                        ))}</h1>
+                        <h1 className="animated-text">
+  {slides[current].text_2.split(" ").map((word, wordIndex) => (
+    <span key={wordIndex} style={{ display: "inline-block", marginRight: "0.25em" }}>
+      {word.split("").map((char, charIndex) => (
+        <span
+          key={charIndex}
+          style={{ animationDelay: `${(wordIndex * word.length + charIndex) * 0.2}s` }}
+        >
+          {char}
+        </span>
+      ))}
+    </span>
+  ))}
+</h1>
+
                         <p className='animate-rightleft'>{slides[current].text_3}</p>
                         <button className='animate-downup'>68 Years of Imapact</button>
                     </div>
