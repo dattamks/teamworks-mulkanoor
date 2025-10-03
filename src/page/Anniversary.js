@@ -1167,27 +1167,27 @@ useEffect(() => {
                     ? 
                     <div className='slide-text'>
                         <h2 className={heroAnimation ? 'animate-slide-text-h2' : ''}>{slides[current].text_1}</h2>
-<h1 className="animated-text">
-  {slides[current].text_2.split(" ").map((word, wordIndex, arr) => {
-    // Count total chars before this word
-    const charsBefore = arr
-      .slice(0, wordIndex)
-      .reduce((sum, w) => sum + w.length, 0) + wordIndex; // + wordIndex for spaces
+                            <h1 className="animated-text">
+                            {slides[current].text_2.split(" ").map((word, wordIndex, arr) => {
+                                // Count total chars before this word
+                                const charsBefore = arr
+                                .slice(0, wordIndex)
+                                .reduce((sum, w) => sum + w.length, 0) + wordIndex; // + wordIndex for spaces
 
-    return (
-      <span key={wordIndex} style={{ display: "inline-block", marginRight: "0.25em" }}>
-        {word.split("").map((char, charIndex) => (
-          <span
-            key={charIndex}
-            style={{ animationDelay: `${(charsBefore + charIndex) * 0.2}s` }}
-          >
-            {char}
-          </span>
-        ))}
-      </span>
-    );
-  })}
-</h1>
+                                return (
+                                <span key={wordIndex} style={{ display: "inline-block", marginRight: "0.25em" }}>
+                                    {word.split("").map((char, charIndex) => (
+                                    <span
+                                        key={charIndex}
+                                        style={{ animationDelay: `${(charsBefore + charIndex) * 0.2}s` }}
+                                    >
+                                        {char}
+                                    </span>
+                                    ))}
+                                </span>
+                                );
+                            })}
+                            </h1>
 
 
                         <p className='animate-rightleft'>{slides[current].text_3}</p>
@@ -1513,7 +1513,7 @@ useEffect(() => {
             {
                 `
                 #services{
-                    background:#e5f9ec;
+                    background:white;
                     padding:30px 10px;
                     font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
                 }
@@ -2036,6 +2036,7 @@ useEffect(() => {
                             flex-wrap:wrap;
                             align-items: stretch;  
                             max-height:550px;
+                            background:white;
                         }
                         .history-box-left{
                             flex:1 1 40%;
@@ -2197,7 +2198,7 @@ useEffect(() => {
                     margin-bottom: 20px;
                 }
                 #awards {
-                    background: #e5f9ec;
+                    background: white;
                     padding: 30px 10px;
                     font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
                 }
