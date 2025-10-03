@@ -1,12 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import founder from './../assets/founder-demo.jpg'
 import Founder from '../assets/ourstory/Founder.jpg';
-import logo from './../assets/logo1.jpg';
+import logo from './../assets/new-logo.png';
 import slider_1 from '../assets/anniversary/slide-1-an.webp';
 import slider_2 from '../assets/anniversary/slide-2-an.jpg';
 import slider_3 from '../assets/anniversary/slide-3-an.webp';
+import transform_1 from '../assets/anniversary/transform_1.jpg';
+import transform_2 from '../assets/anniversary/transform_2.jpg';
+import transform_3 from '../assets/anniversary/transform_3.jpg';
 import box_background from '../assets/anniversary/box-background.png';
-import { FaFacebook, FaTwitter, FaInstagram, FaPhone, FaLinkedin, FaEnvelope, FaBars, FaTimes, FaGreaterThan, FaLessThan } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaPhone, FaLinkedin, FaEnvelope, FaBars, FaTimes, FaHome, FaGreaterThan, FaLessThan } from 'react-icons/fa';
 import { title } from 'framer-motion/client';
 import impactImg from '../assets/agriinput/ag1.jpg'
 import year1956 from '../assets/milestones/1956.jpg';
@@ -83,10 +86,12 @@ import award5 from '../assets/awards/5.jpg'
 import award6 from '../assets/awards/6.jpeg'
 import award7 from '../assets/awards/7.jpeg'
 import award11 from '../assets/awards/11.JPG'
+import { interactionTargetMap } from 'web-vitals/attribution/onINP.js';
 
 
 
 function Anniversary(){
+
     const topNavData = {
         phone:"+919440800651",
         email:"mcrcms1956@gmail.com",
@@ -96,6 +101,21 @@ function Anniversary(){
         linkedin:"https://www.linkedin.com/company/mulkanoor-cooperative-society/posts/?feedView=all",
         youtube:"https://youtube.com/@mulkanoorcooperative_1?si=3eJSaFOmvCC9sSai",
     }
+
+    const [fixedNav, setFixedNav] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () =>{
+            if(window.scrollY >= 10){
+                setFixedNav(true)
+            }else{
+                setFixedNav(false)
+            }
+        }
+        window.addEventListener('scroll',handleScroll)
+        return () => window.removeEventListener('scroll',handleScroll)
+    },[])
+
     const [isOpen, setIsOpen] = useState(false)
     const toggle = () => {
         setIsOpen(!isOpen);
@@ -120,11 +140,46 @@ function Anniversary(){
         setCurrent((prev) => prev === 0 ? length - 1 : prev - 1)
     }
     useEffect(() => {
-       const timer = setInterval(() => {
+        const interval = current === 0 ? 12000 : 1000;
+        const timer = setInterval(() => {
             nextSlide()
-        },4000)
+        },interval)
         return () => clearInterval(timer)
-    })
+    },[current])
+
+    const [heroAnimation, setHeroAnimation] = useState(false)
+    const [zoomAnimation, setZoomAnimation] = useState(false)
+    useEffect(() => {
+        setHeroAnimation(true)
+        setZoomAnimation(true)
+    },[])
+
+
+const headRef = useRef(null);
+const impactRef = useRef(null);
+const successRef = useRef(null);
+useEffect(() => {
+  const elements = document.querySelectorAll('.head-img, .impact-highlight, .success-img');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('showanimation');
+      } else {
+        entry.target.classList.remove('showanimation');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  elements.forEach(el => observer.observe(el));
+
+  return () => {
+    elements.forEach(el => observer.unobserve(el));
+  };
+}, []);
+
+
+
 
     const glimpse = [
         {
@@ -152,53 +207,66 @@ function Anniversary(){
     const transEffects = [
         {
             heading:"Land Transformation",
+            img:transform_1,
             before:{
-                img:founder,
                 title:"Barren Land",
                 para:"Drought-ridden fields with limited resources."
             },
             after:{
-                img:founder,
                 title:"Green Fields",
                 para:"Modern irrigation ensures year-round productivity."
             }
         },
         {
             heading:"Farmer Prosperity",
+            img:transform_2,
             before:{
-                img:founder,
                 title:"Poverty",
                 para:"Limited access to credit and markets."
             },
             after:{
-                img:founder,
                 title:"Prosperity",
                 para:"Stable incomes and modern living standards."
             }
         },
         {
             heading:"Community Growth",
+            img:transform_3,
             before:{
-                img:founder,
                 title:"Isolated",
                 para:"Disconnected from markets and technology."
             },
             after:{
-                img:founder,
                 title:"Connected",
                 para:"Linked to markets with technology access."
             }
         }
     ]
     const [transIndex, setTransIndex] = useState(0)
-    const transVisibleSlide = 2;
+    const [transVisibleSlide, setTransVisibleSlide] = useState(2)
+
+    const handleTransResize = () => {
+        const width = window.innerWidth;
+        if(width < 1024){
+            setTransVisibleSlide(1)
+        }else{
+            setTransVisibleSlide(2)
+        }
+    }
+    useEffect(() => {
+        handleTransResize();
+        window.addEventListener('resize',handleTransResize)
+        return () => window.removeEventListener('resize',handleTransResize)
+    },[])
+
     const transSlideWidth = 100 / transVisibleSlide;
+    
     useEffect(() => {
         const timer = setInterval(() => {
             setTransIndex((prev) => prev >= transEffects.length - transVisibleSlide ? 0 : prev + 1)
-        },3000)
+        },300000)
         return () => clearInterval(timer)
-    },[])
+    },[transVisibleSlide])
 
 
     const impacts = [
@@ -512,7 +580,22 @@ function Anniversary(){
 
     const [hyearIndex,setHyearIndex] = useState(0);
     const [hyearActiveIndex,setHyearActiveIndex] = useState(0);
-    const visibleHyear = 4;
+    const [visibleHyear,setVisibleHyear] = useState(4);
+    const handleHyearResize = () => {
+        const width = window.innerWidth;
+        if(width < 768){
+            setVisibleHyear(2)
+        }else if(width < 1040){
+            setVisibleHyear(3)
+        }else{
+            setVisibleHyear(4)
+        }
+    }
+    useEffect(() => {
+        handleHyearResize();
+        window.addEventListener('resize',handleHyearResize);
+        return () => window.removeEventListener('resize', handleHyearResize)
+    },[])
     const HyearSlideWidth = 100 / visibleHyear;
 
 
@@ -719,6 +802,10 @@ function Anniversary(){
                 #nav{
                     padding:10px 10px;
                     background:#f2f3f5;
+                    position: ${fixedNav ? "fixed" : "relative"};
+                    z-index: 8;
+                    width:100%;
+                    top:0;
                 }
                 .nav-list{
                     display:flex;
@@ -728,7 +815,7 @@ function Anniversary(){
                 }
                 .nav-box {
                     display:flex;
-                    flex-wrap:wrap:
+                    flex-wrap:wrap;
                     justify-content:space-between;
                     align-items:center;
                     gap:20px;
@@ -784,13 +871,14 @@ function Anniversary(){
                     </div>
                     <div className='nav-box'>
                         <ul>
-                            <li>Home</li>
-                            <li>About</li>
-                            <li>Awards</li>
-                            <li>History</li>
-                            <li>Services</li>
+                            <li><a href="">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#impact">Impact</a></li>
+                            <li><a href="#history">History</a></li>
+                            <li><a href="#awards">Awards</a></li>
                         </ul>
-                        <button>Contact</button>
+                        <a href="#contact"><button>Contact</button></a>
                         <span className='humburg' onClick={toggle}>
                             {!isOpen ? <FaBars /> : <FaTimes /> }
                         </span>
@@ -862,12 +950,13 @@ function Anniversary(){
                     </div>
                     <div className='menu-item'>
                         <ul>
-                            <li>Home</li>
-                            <li>About</li>
-                            <li>Awards</li>
-                            <li>History</li>
-                            <li>Services</li>
-                            <li>Contact</li>
+                            <li><a href="">Home</a></li>
+                            <li><a href="#about" onClick={toggle}>About</a></li>
+                            <li><a href="#services" onClick={toggle}>Services</a></li>
+                            <li><a href="#impact" onClick={toggle}>Impact</a></li>
+                            <li><a href="#history" onClick={toggle}>History</a></li>
+                            <li><a href="#awards" onClick={toggle}>Awards</a></li>
+                            <li><a href="#contact" onClick={toggle}>Contact</a></li>
                         </ul>
                     </div>
                     <div className='menu-footer'>
@@ -925,6 +1014,7 @@ function Anniversary(){
                     flex-direction: column; 
                     justify-content:center;
                     align-items:center;
+                    padding: 20px;
                 }
                 .slide-text h2{
                     color:white;
@@ -954,6 +1044,103 @@ function Anniversary(){
                     background:linear-gradient(to left, #0c9740, #db500b);
                     box-shadow:0px 0px 5px #ffbf00;
                 }
+                @keyframes slideDown {
+                    0% {
+                        opacity: 0;
+                        transform: translateY(-50px); /* start above */
+                    }
+                    100% {
+                        opacity: 1;
+                        transform: translateY(0); /* final position */
+                    }
+                }
+
+                .animate-slide-text-h2 {
+                    animation: slideDown 3s ease forwards; /* run once */
+                }
+                @media(max-width:1024px){
+                    .slide-text h2{
+                        font-size:50px;
+                        line-height:2.4;
+                    }
+                    .slide-text h1{
+                        font-size:60px;
+                    }
+                    .slide-text p{
+                        font-size:18px;
+                    }
+                }
+                @media(max-width:768px){
+                    .slide-text h2{
+                        font-size:42px;
+                        line-height:2.4;
+                    }
+                    .slide-text h1{
+                        font-size:48px;
+                    }
+                    .slide-text p{
+                        font-size:18px;
+                    }
+                }
+                @media(max-width:568px){
+                    .slide-text{
+                        padding: 10px;
+                    }
+                    .slide-text h2{
+                        font-size:28px;
+                        line-height: 3.4;
+                    }
+                    .slide-text h1{
+                        font-size:30px;
+                    }
+                }
+            .animated-text span {
+                opacity: 0;
+                display: inline-block;
+                transform: translateY(20px);
+                animation: fadeUp 0.5s forwards;
+            }
+
+            @keyframes fadeUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            @keyframes rightLeft{
+                0%{
+                    opacity:0;
+                    transform:translateX(-100px)
+                }
+                100%{
+                    opacity:1;
+                    transform:translateX(0)
+                }
+            }
+            .animate-rightleft{
+                opacity:0;
+                animation: rightLeft 3s ease forwards;
+                animation-delay: 3s; /* start after 10 seconds */
+            }
+            @keyframes downUp{
+                0%{
+                    opacity:0;
+                    transform:translateY(+100px);
+                }
+                100%{
+                    opacity:1;
+                    transform:translateY(0)
+                }
+            }
+            .animate-downup{
+                opacity:0;
+                animation:downUp 3s ease forwards;
+                animation-delay:4s;
+            }
                 `
             }
         </style>
@@ -966,10 +1153,12 @@ function Anniversary(){
                     {current === 0 
                     ? 
                     <div className='slide-text'>
-                        <h2>{slides[current].text_1}</h2>
-                        <h1>{slides[current].text_2}</h1>
-                        <p>{slides[current].text_3}</p>
-                        <button>68 Years of Imapact</button>
+                        <h2 className={heroAnimation ? 'animate-slide-text-h2' : ''}>{slides[current].text_1}</h2>
+                        <h1 className="animated-text">{slides[current].text_2.split("").map((char, index) => (
+                            <span key={index} style={{animationDelay:`${index * 0.2}s`}}>{char === " " ? "\u00A0" : char}</span>
+                        ))}</h1>
+                        <p className='animate-rightleft'>{slides[current].text_3}</p>
+                        <button className='animate-downup'>68 Years of Imapact</button>
                     </div>
                     : ''}
                 </div>
@@ -979,7 +1168,7 @@ function Anniversary(){
         <style>
             {
                 `
-                #main {
+                #about {
                     background: white;
                     padding: 30px 10px;
                     font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
@@ -1009,10 +1198,23 @@ function Anniversary(){
                 .main-text p{
                     margin-bottom:10px;
                 }
+                @keyframes zoomIn{
+                    0%{
+                        opacity:0;
+                        transform:scale(0.3);
+                    }
+                    100%{
+                        opacity:1;
+                        transform:scale(1)
+                    }
+                }
+                .head-img.showanimation {
+                     animation: zoomIn 2s ease forwards; /*
+                }
                 `
             }
         </style>
-        <section id="main">
+        <section id="about">
             <div className="container">
                 <h2 className="heading" style={{fontSize:"54px"}}>Our Founder</h2>
                 <p className="subheading" style={{marginTop:"-10px"}}>
@@ -1020,7 +1222,7 @@ function Anniversary(){
                 </p>
                 <div className="main-list">
                     <div className="main-img">
-                        <img src={Founder} alt={Founder} className='founder-img'/>
+                        <img src={Founder} alt={Founder} className='head-img' ref={headRef}/>
                     </div>
                     <div className="main-text">
                         <h1 className="heading">AligiReddy Vishwanath Reddy</h1>
@@ -1077,9 +1279,15 @@ function Anniversary(){
                     color: #29322c;
                 }
                 @media(max-width:768px){
-                    .glimpse-box{
-                        flex:1 1 48%;
+                    .glimpse-list{
+                        gap:2px;
                     }
+                    .glimpse-box{
+                        flex:1 1 40%;
+                    }
+                }
+                    
+
                 `
             }
         </style>
@@ -1102,7 +1310,6 @@ function Anniversary(){
                 `
                 #change{
                     width:100%;
-                    height:470px;
                     border:1px solid #0b4e24;
                 }
                 .change-list{
@@ -1110,10 +1317,10 @@ function Anniversary(){
                     display:flex;
                     flex-wrap: nowrap;
                     transition:transform 0.5s ease;
+                    align-items: stretch;
                 }
                 .change-box{
                     flex:0 0 50%;
-                    height:100%;
                     border-right:1px solid white;
                     display:flex;
                     flex-wrap:wrap;
@@ -1121,6 +1328,8 @@ function Anniversary(){
                 .box-head{
                     flex:0 0 50%;
                     position:relative;
+                    height:100%;
+                    align-items:stretch;
                 }
                 .box-head img{
                     width:100%;
@@ -1208,6 +1417,32 @@ function Anniversary(){
                     width:100%;
                     object-fit:cover;
                 }
+                @media(max-width:768px){
+                    .change-box{
+                        flex:0 0 100%;
+                    }
+                }
+                @media(max-width:568px){
+                    .change-box{
+                        height:100%;
+                    }
+                    .box-head{
+                        flex:0 0 100%;
+                    }
+                    .box-body{
+                        flex:0 0 100%;
+                    }
+                    .change-box img
+                    {
+                        height: 65px;
+                    }
+                    .box-head .overlay-h3 {
+                        border-radius: 0px;
+                        width: 100%;
+                        background:#0b4e24;
+                    }
+
+                }
                 `
             }
         </style>
@@ -1218,7 +1453,7 @@ function Anniversary(){
                 {transEffects.map((transArr, index) => (
                     <div className='change-box'>
                         <div className='box-head'>
-                            <img src={founder} alt="" />
+                            <img src={transArr.img} alt="" />
                             <div className='overlay'></div>
                             <h3 className='overlay-h3'>{transArr.heading}</h3>
                         </div>
@@ -1293,7 +1528,7 @@ function Anniversary(){
                     padding:2px 0px;
                 }
                 .services-box li::marker {
-                    color: green; /* bullet becomes green */
+                    color: green; 
                 }
                 .side-circle{
                     width:150px;
@@ -1416,7 +1651,7 @@ function Anniversary(){
                 }
                 .impact-highlight{
                     margin-top:20px;
-                    padding:60px 60px;
+                    padding:60px 10px;
                     background:linear-gradient(to left, #0b4e24, #db500b);
                     border:2px solid #db500b;
                 }
@@ -1428,9 +1663,13 @@ function Anniversary(){
                 }
                 .impact-highlight p{
                     font-size:18px;
-                    line-height:1.2;
+                    line-height:1.6;
                     color:white;
                     margin-top:20px;
+                }
+                    
+                .impact-highlight.showanimation {
+                     animation: zoomIn 2s ease forwards; 
                 }
                 @media(max-width:768px){
                     .impact-box-1{
@@ -1443,6 +1682,13 @@ function Anniversary(){
                 @media(max-width:425px){
                     .impact-box{
                         flex: 0 0 98%;
+                    }
+                    
+                    .impact-highlight h3{
+                        display:none;
+                    }
+                    .impact-highlight h3:nth-child(3){
+                        display:block;
                     }
                 }
                 `
@@ -1471,7 +1717,7 @@ function Anniversary(){
                         </div>
                     </div>
                 </div>
-                <div className="impact-highlight">
+                <div className="impact-highlight"  ref={impactRef}>
                     <h3>Centenary Celebration</h3> 
                     <h3>of</h3> 
                     <h3>AligiReddy Vishwanath Reddy 🎉</h3>
@@ -1683,6 +1929,16 @@ function Anniversary(){
                     margin:0 auto;
                     display:none;
                 }
+                @media(max-width:768px){
+                    .year-box{
+                        flex:0 0 33.333%;
+                    }
+                }
+                @media(max-width:568px){
+                    .year-box{
+                        flex:0 0 50%;
+                    }
+                }
                 `
             }
         </style>
@@ -1844,7 +2100,45 @@ function Anniversary(){
                 </div>
             </div>
         </section>
+        <style>
+            {
+                `
+                #success{
+                    background: linear-gradient(to bottom, #e5f9ec 0% 45%, #0b4e24 45% 100%);
+                    padding: 30px 10px;
+                    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+                }
+                .success-box{
+                    text-align:center;
+                    align-items:center;
+                    display:flex;
+                    flex-direction:column;
+                    justify-content:center;
+                }
+                .success-box img{
+                    width:100%;
+                    max-width:400px;
+                    border-radius:50%;
+                    border:5px solid #db500b;
+                    aspect-ratio: 1/1;
+                }
+                .success-img.showanimation {
+                     animation: zoomIn 2s ease forwards; 
+                }
+                @media(max-width:568px){
+                    background: linear-gradient(to bottom, #e5f9ec 0% 40%, #0b4e24 40% 100%);
+                }
+                `
+            }
+        </style>
 
+        <section id="success">
+            <div className='success-box'>
+                <img src={Founder} alt="" className='success-img' ref={successRef}/>
+                <h2 class="heading" style={{color: "white"}}>Empowering Farmers Through Comprehensive Support</h2>
+                <p class="subheading" style={{color: "rgb(255, 191, 0)",maxWidth:"900px"}}>These prestigious awards reflect our dedication to farmer empowerment and transparent governance.</p>
+            </div>
+        </section>
         <style>
             {
                 `
@@ -1963,7 +2257,144 @@ function Anniversary(){
                 </div>
             </div>
         </section>
-
+        <style>
+            {
+                `
+                #contact{
+                    background: #0b4e24;
+                    padding: 30px 10px;
+                    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+                }
+                .footer-item{
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                    border-bottom:2px solid white;
+                    padding-bottom:10px;
+                }
+                
+                .footer-item p{
+                    text-align:left;
+                    color:#ffbf00;
+                    padding-left:5px;
+                }
+                .footer-list{
+                    display:flex;
+                    flex-wrap:wrap;
+                }
+                .footer-box:nth-child(1){
+                    flex:1 1 45%;
+                    text-align:left;
+                    padding:10px 20px;
+                }
+                .footer-box{
+                    flex:1 1 25%;
+                    text-align:left;
+                    padding:10px 20px;
+                }
+                .footer-box h4{
+                    color:#db500b;
+                    font-size:22px;
+                    font-weight:bold;
+                    margin-bottom:10px;
+                }
+                .flex-box{
+                    display:flex;
+                    flex-direction:column;
+                    align-items:center;
+                    margin-bottom:10px;
+                }
+                .flex-box img{
+                    width:48px;
+                    border-radius:50%;
+                }
+                .flex-box h3{
+                    color:white;
+                    padding-left:10px;
+                    font-size:22px;
+                    font-weight:bold;
+                }
+                .footer-box ul{
+                    list-style:none;
+                }
+                .footer-box li{
+                    color:white;
+                }
+                .flex{
+                    color:white;
+                    font-size:20px;
+                    padding-right:10px;
+                }
+                .social-logo{
+                    font-size:20px;
+                    margin-right:15px;
+                    border-radius: 50%;
+                    border:1px solid #0b4e24;
+                    padding:10px;
+                    color:#0b4e24;
+                    background:white;
+                    transition: all 0.6s ease;
+                }
+                .social-logo:hover{
+                    color:white;
+                    background:#0b4e24;
+                    border:1px solid white;
+                    transform: rotate(360deg);
+                }
+                @media(max-width:768px){
+                    .footer-box{
+                        flex:1 1 48%;
+                    }
+                }
+                @media(max-width:468px){
+                    .footer-box{
+                        flex:1 1 98%;
+                    }
+                }
+                `
+            }
+        </style>
+        <section id="contact">
+            <div className='container'>
+                <div className='footer-item'>
+                    <div className='flex-box'>
+                        <img src={logo} alt=""/>
+                        <h3>MCRCMS Coop Society</h3>
+                    </div>
+                    <p>Elevating Lives Together From Cooperation to Prosperity</p>
+                </div>
+                <div className='footer-list'>
+                    <div className='footer-box'>
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li><a href={`tel:${topNavData.phone}`}><div className='top-nav-item'><FaPhone /><span>{topNavData.phone}</span></div></a></li>
+                            <li><a href={`mailto:${topNavData.email}`}><div className='top-nav-item'><FaEnvelope /><span>{topNavData.email}</span></div></a></li>
+                            <li><div className='top-nav-item'><span>Mulkanoor Cooperative Rural Credit and Marketing Society Ltd., Mulkanoor Village, Bheemadevarapally Mandal, Hanumakonda District-505471</span></div></li>
+                        </ul>
+                    </div>
+                    <div className='footer-box'>
+                        <h4>Discover</h4>
+                        <ul>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#impact">Impact</a></li>
+                            <li><a href="#history">History</a></li>
+                            <li><a href="#awards">Awards</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div className='footer-box'>
+                        <h4>Social Media</h4>
+                        <div className='flex'>
+                            <a href={topNavData.facebook}><p className='social-logo'><FaFacebook /></p></a>
+                            <a href={topNavData.twitter}><p  className='social-logo'><FaTwitter /></p></a>
+                            <a href={topNavData.insta}><p  className='social-logo'><FaInstagram /></p></a>
+                            <a href={topNavData.linkedin}><p  className='social-logo'><FaLinkedin /></p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         </>
     )
 }
