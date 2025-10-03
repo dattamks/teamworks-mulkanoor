@@ -54,10 +54,10 @@ function ScrollToTop() {
 function AppContent() {
   const isLoading = usePageLoading();
   const location =useLocation();
-  const hideLayout = location.pathname === "/anniversary"
+  const hideLayout = location.pathname.startsWith("/anniversary");
   return (
     <>
-      {isLoading && <Loading />}
+      {isLoading && !hideLayout && <Loading />}
       <ScrollToTop />
       {!hideLayout && <Navbar />}
       <div className="min-h-screen">
