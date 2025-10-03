@@ -1343,7 +1343,6 @@ useEffect(() => {
                 `
                 #change{
                     width:100%;
-                    border:1px solid #0b4e24;
                 }
                 .change-list{
                     height:100%;
