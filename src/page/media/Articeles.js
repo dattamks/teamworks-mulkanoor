@@ -12,6 +12,7 @@ import thum7 from '../../assets/articeles/7.png';
 import thum8 from '../../assets/articeles/8.png';
 import thum9 from '../../assets/articeles/9.jpg';
 import thum10 from '../../assets/articeles/10.png';
+import thum11 from '../../assets/articeles/11.jpg';
 
 
 const Articeles = () => {
@@ -100,6 +101,14 @@ const Articeles = () => {
       pdfFile: "https://hindudayashankar.com/agriculture/mulkanoor-cooperative-a-model-of-visionary-leadership-and-good-governance/",
       thumbnail: thum10,
       type:"artical",
+    },
+    {
+      id: 11,
+      title: "KRITI KALP INDIA- A ROADMAP TO 2047( A Quarterly Bilingual Journat): Thriving & Sustainable Economy Special reference to the “Co-Op Sector” and MoC Reforms - MCRCMS President Sri. A. Praveen Reddy",
+      date: "Sept 2025",
+      pdfFile: "https://drive.google.com/file/d/1Xzxz87ZZLF0t28TkKqZBoLupOyNUAaG6/view",
+      thumbnail: thum11,
+      type:"pdf",
     },
   ];
 
