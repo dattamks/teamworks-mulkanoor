@@ -25,7 +25,7 @@ const Contact = () => {
         {
             // icon: <FaEnvelope className="text-2xl" />,
             title: "Email",
-            details: ["mcrcms1956@gmail.com"],
+            details: ["info@mcrcms.coop"],
             animation: { x: [-5, 5, -5], transition: { duration: 2, repeat: Infinity } }
         },
         {
