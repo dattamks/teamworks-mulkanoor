@@ -104,7 +104,7 @@ const Articeles = () => {
     },
     {
       id: 11,
-      title: "KRITI KALP INDIA- A ROADMAP TO 2047( A Quarterly Bilingual Journat): Thriving & Sustainable Economy Special reference to the “Co-Op Sector” and MoC Reforms - MCRCMS President Sri. A. Praveen Reddy",
+      title: "KRITI KALP INDIA- A ROADMAP TO 2047( A Quarterly Bilingual Journal): Thriving & Sustainable Economy Special reference to the “Co-Op Sector” and MoC Reforms- Article authored by MCRCMS President Sri. A. Praveen Reddy",
       date: "Sept 2025",
       pdfFile: "https://drive.google.com/file/d/1Xzxz87ZZLF0t28TkKqZBoLupOyNUAaG6/view",
       thumbnail: thum11,
