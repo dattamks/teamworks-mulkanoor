@@ -40,7 +40,7 @@ const Footer = () => {
                                 <span>+91 944 080 0651</span>
                             </p>
                             <p className="flex items-center gap-2">
-                                <span>mcrcms1956@gmail.com
+                                <span>info@mcrcms.coop
                                 </span>
                             </p>
                             <p className="flex items-start gap-2">
