@@ -175,6 +175,16 @@ const Storys = () => {
               </motion.div>
             ))}
           </div>
+<div className='px-6 py-8 flex justify-center relative z-[50]'>
+  <a
+    href='https://drive.google.com/file/d/1zJqKW_Zhdq_rhnhrBIlSaZQK7_wKHZPc/view?usp=sharing'
+    target='_blank'
+    rel='noopener noreferrer'
+    className='px-6 py-4 bg-green-600 text-white font-medium text-lg rounded-lg shadow-md hover:bg-green-700 transition duration-200 inline-block relative z-[50]'
+  >
+    Click here to know more about us
+  </a>
+</div>
 
           {/* Additional Decorative Elements */}
           <div className="absolute -bottom-4 left-0 w-full h-8 bg-gradient-to-t from-earth-50/20 to-transparent"></div>
