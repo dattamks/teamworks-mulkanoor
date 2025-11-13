@@ -10,27 +10,27 @@ const Report = () => {
   const reports = [
     {
       id: 1,
-      year: "2021-22",
-      title: "Annual Report 2021-22",
-      description: "Financial performance and operational highlights of Mulkanoor Cooperative Society for the year 2021-22.",
-      pdfFile: "https://drive.google.com/file/d/1osaJ5TPGI1V-qozH16k9C_bw-uxQMjdI/view?usp=sharing",
+      year: "2024-25",
+      title: "Annual Report 2024-25",
+      description: "Financial performance and operational highlights of Mulkanoor Cooperative Society for the year 2024-25.",
+      pdfFile: "https://drive.google.com/file/d/1D2Ap6n6HQnX2gbsrl2tGs_zIu9FpSOCw/view?usp=sharing",
       color: "from-blue-500 to-blue-700",
     },
     {
       id: 2,
-      year: "2022-23",
-      title: "Annual Report 2022-23",
-      description: "Key achievements, financial statements, and strategic initiatives undertaken by Mulkanoor Cooperative Society during 2022-23.",
-      pdfFile: "https://drive.google.com/file/d/1s1aX3EEsBrEMpkI7rQ326KdGcqGwoHUS/view?usp=sharing",
-      color: "from-green-500 to-green-700",
-    },
-    {
-      id: 3,
       year: "2023-24",
       title: "Annual Report 2023-24",
       description: "Comprehensive overview of operations, governance, and financial performance of Mulkanoor Cooperative Society for 2023-24.",
       pdfFile: "https://drive.google.com/file/d/12o5Q4Gy5uJQKZ2FgML9pCokLDTZML8G8/view?usp=sharing",
       color: "from-purple-500 to-purple-700",
+    },
+    {
+      id: 3,
+      year: "2022-23",
+      title: "Annual Report 2022-23",
+      description: "Key achievements, financial statements, and strategic initiatives undertaken by Mulkanoor Cooperative Society during 2022-23.",
+      pdfFile: "https://drive.google.com/file/d/1s1aX3EEsBrEMpkI7rQ326KdGcqGwoHUS/view?usp=sharing",
+      color: "from-green-500 to-green-700",
     }
   ];
 
