@@ -156,7 +156,7 @@ const Navbar = () => {
             path: "/report",
             submenu: [
                 { title: 'Annual report', path: '/report' },
-                { title: 'PPT', path: 'https://docs.google.com/presentation/d/1r6JbbuliOwFaanVo5PGkBltpog3eI9n8/edit?usp=sharing&ouid=105287510170110408901&rtpof=true&sd=true' },
+                { title: 'PPT', path: 'https://docs.google.com/presentation/d/1eLqmVeYHTSIib2xNbbCsRWHlr9ENuceE/edit?usp=sharing&ouid=112644909259838731234&rtpof=true&sd=true' },
                 { title: 'Society Videos', path: '/media/videos' },
             ]
         }
