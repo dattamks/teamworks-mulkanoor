@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { QRCodeCanvas } from "qrcode.react";
 import founder from './../assets/founder-demo.jpg'
 import Founder from '../assets/ourstory/Founder.jpg';
 import logo from './../assets/new-logo.png';
@@ -9,7 +10,7 @@ import transform_1 from '../assets/anniversary/transform_1.jpg';
 import transform_2 from '../assets/anniversary/transform_2.jpg';
 import transform_3 from '../assets/anniversary/transform_3.jpg';
 import box_background from '../assets/anniversary/box-background.png';
-import { FaFacebook, FaTwitter, FaInstagram, FaPhone, FaLinkedin, FaEnvelope, FaBars, FaTimes, FaHome, FaGreaterThan, FaLessThan } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaPhone, FaLinkedin, FaYoutube, FaEnvelope, FaBars, FaTimes, FaHome, FaGreaterThan, FaLessThan } from 'react-icons/fa';
 import { title } from 'framer-motion/client';
 import impactImg from '../assets/agriinput/ag1.jpg'
 import year1956 from '../assets/milestones/1956.jpg';
@@ -124,7 +125,7 @@ function Anniversary(){
         {
             image: slider_1,   // replace with your image path
             text_1: 'Tribute to',
-            text_2: 'AligiReddy Vishwanath Reddy',
+            text_2: 'Kasi Vishwanatha Reddy',
             text_3: 'Celebrating the Centenary of Our Visionary Founder and 68 Years of Agricultural Excellence, Farmer Empowerment and Rural Transformation.',
         },
         { image: slider_2 },
@@ -671,15 +672,20 @@ useEffect(() => {
         
     ]
   const [awardIndex, setAwardIndex] = useState(0);
-  const [visibleSlide, setVisbleSlide] = useState(4)
+  const [visibleSlide, setVisbleSlide] = useState(2)
     const handleResize = () => {
         const width = window.innerWidth;
+        // if(width < 768){
+        //     setVisbleSlide(1)
+        // }else if(width < 1024){
+        //     setVisbleSlide(2)
+        // }else{
+        //     setVisbleSlide(4)
+        // }
         if(width < 768){
             setVisbleSlide(1)
-        }else if(width < 1024){
-            setVisbleSlide(2)
         }else{
-            setVisbleSlide(4)
+            setVisbleSlide(2)
         }
     }
     useEffect(() => {
@@ -792,6 +798,7 @@ useEffect(() => {
                         <a href={topNavData.twitter}><p><FaTwitter /></p></a>
                         <a href={topNavData.insta}><p><FaInstagram /></p></a>
                         <a href={topNavData.linkedin}><p><FaLinkedin /></p></a>
+                        <a href={topNavData.youtube}><p><FaYoutube /></p></a>
                     </div>
                 </div>
             </div>
@@ -1258,9 +1265,9 @@ useEffect(() => {
                         <img src={Founder} alt={Founder} className='head-img' ref={headRef}/>
                     </div>
                     <div className="main-text">
-                        <h1 className="heading">AligiReddy Vishwanath Reddy</h1>
+                        <h1 className="heading">Kasi Vishwanatha Reddy</h1>
                         <p>
-                            Mulkanoor cooperative rural bank was established in 1956 by esteemed visionary founder Late sri A.K Vishwanatha Reddy with the primary objective of uplifting socio-economic status of farmers. The society was initially registered under the Hyderabad cooperative societies act 1952. later, automatically deemed into A.P cooperative societies act 1964. After the enactment of Mutually aided cooperative societies act 1995 the cooperative transitioned under this new enactment.
+                            Mulkanoor cooperative rural bank was established in 1956 by esteemed visionary founder Late sri Kasi Vishwanatha Reddy with the primary objective of uplifting socio-economic status of farmers. The society was initially registered under the Hyderabad cooperative societies act 1952. later, automatically deemed into A.P cooperative societies act 1964. After the enactment of Mutually aided cooperative societies act 1995 the cooperative transitioned under this new enactment.
                         </p>
                         <p>
                             The cooperative operates in its catchment of 14 revenue villages with a total of 18 gram panchayats. These villages then were in the drought prone region characterized by uplands and hillocks. There were conditions of lack of irrigation facilities,power supply, finance, agri-inputs, remunerative price for their produce. These situations made our ancestors build a temple of trust with a primary objective of countering these challenges and hardships faced by farmers.
@@ -2215,7 +2222,7 @@ useEffect(() => {
                     transition: transform 0.5s ease-in-out;
                 }
                 .awards-box{
-                    flex: 0 0 23%; /* 4 slides visible at a time */
+                    flex: 0 0 48%; /* 4 slides visible at a time */
                     box-sizing: border-box;
                     background:white;
                     border:1px solid #b9dbc5;
@@ -2290,6 +2297,117 @@ useEffect(() => {
                 </div>
             </div>
         </section>
+<style>
+            {
+                `
+                .qr-section {
+                    background: #e5f9ec;
+                    padding: 30px 10px;
+                    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+                }
+                .qr-section .container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                .qr-left,
+                .qr-right {
+                    flex: 1 1 45%;
+                    text-align: center;
+                }
+                .qr-right h2 {
+                    font-size: 28px;
+                    color: #0b4e24;
+                    margin-bottom: 15px;
+                    font-weight: bold;
+                }
+                .qr-right p {
+                    font-size: 16px;
+                    color: #29322c;
+                    margin-bottom: 20px;
+                    line-height: 1.6;
+                }
+                .qr-right .visit-btn {
+                    display: inline-block;
+                    padding: 10px 30px;
+                    background: linear-gradient(to left, #0b4e24, #db500b);
+                    color: white;
+                    font-weight: bold;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                .qr-right .visit-btn:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+                }
+                .qr-left {
+                    display: flex;
+                    justify-content: center;
+                }
+                .qr-card {
+                    background: white;
+                    padding: 20px;
+                    border: 1px solid #d5d7d6;
+                    border-radius: 10px;
+                    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+                    transition: transform 0.3s ease;
+                }
+                .qr-card:hover {
+                    transform: scale(1.02);
+                }
+                @media (max-width: 768px) {
+                    .qr-section .container {
+                        flex-direction: column;
+                    }
+                    .qr-left,
+                    .qr-right {
+                        flex: 1 1 100%;
+                    }
+                    .qr-right {
+                        order: 2;
+                    }
+                    .qr-left {
+                        order: 1;
+                        margin-bottom: 20px;
+                    }
+                }
+                `
+            }
+        </style>
+       <section className="qr-section">
+        <div className="container">
+ <div className="qr-right">
+        <h2>Discover More About Us</h2>
+        <p>
+          Scan the QR code or click the button to explore our website, learn
+          about our services, latest updates, and much more.
+        </p>
+        <a
+          href="https://mcrcms.coop/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="visit-btn"
+        >
+          Visit Now
+        </a>
+      </div>
+      <div className="qr-left">
+        <div className="qr-card">
+          <QRCodeCanvas
+            value="https://mcrcms.coop/"
+            size={220}
+            bgColor="#ffffff"
+            fgColor="#1a1a1a"
+            level="H"
+            includeMargin={true}
+          />
+        </div>
+      </div>
+        </div>
+    </section>
         <style>
             {
                 `
@@ -2423,6 +2541,7 @@ useEffect(() => {
                             <a href={topNavData.twitter}><p  className='social-logo'><FaTwitter /></p></a>
                             <a href={topNavData.insta}><p  className='social-logo'><FaInstagram /></p></a>
                             <a href={topNavData.linkedin}><p  className='social-logo'><FaLinkedin /></p></a>
+                            <a href={topNavData.youtube}><p  className='social-logo'><FaYoutube /></p></a>
                         </div>
                     </div>
                 </div>
