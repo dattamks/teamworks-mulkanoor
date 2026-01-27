@@ -125,7 +125,7 @@ function Anniversary(){
         {
             image: slider_1,   // replace with your image path
             text_1: 'Tribute to',
-            text_2: 'AligiReddy Kasi Vishwanatha Reddy',
+            text_2: 'Kasi Vishwanatha Reddy',
             text_3: 'Celebrating the Centenary of Our Visionary Founder and 70 Years of Agricultural Excellence, Farmer Empowerment and Rural Transformation.',
         },
         { image: slider_2 },
