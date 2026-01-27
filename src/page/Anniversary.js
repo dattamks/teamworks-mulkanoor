@@ -125,7 +125,7 @@ function Anniversary(){
         {
             image: slider_1,   // replace with your image path
             text_1: 'Tribute to',
-            text_2: 'Kasi Vishwanatha Reddy',
+            text_2: 'AligiReddy Kasi Vishwanatha Reddy',
             text_3: 'Celebrating the Centenary of Our Visionary Founder and 70 Years of Agricultural Excellence, Farmer Empowerment and Rural Transformation.',
         },
         { image: slider_2 },
@@ -1198,7 +1198,7 @@ useEffect(() => {
 
 
                         <p className='animate-rightleft'>{slides[current].text_3}</p>
-                        <button className='animate-downup'>70 Years of Imapact</button>
+                        <button className='animate-downup'>70 Years of Impact</button>
                     </div>
                     : ''}
                 </div>
@@ -1265,9 +1265,9 @@ useEffect(() => {
                         <img src={Founder} alt={Founder} className='head-img' ref={headRef}/>
                     </div>
                     <div className="main-text">
-                        <h1 className="heading">Kasi Vishwanatha Reddy</h1>
+                        <h1 className="heading">AligiReddy Kasi Vishwanatha Reddy</h1>
                         <p>
-                            Mulkanoor cooperative rural bank was established in 1956 by esteemed visionary founder Late sri Kasi Vishwanatha Reddy with the primary objective of uplifting socio-economic status of farmers. The society was initially registered under the Hyderabad cooperative societies act 1952. later, automatically deemed into A.P cooperative societies act 1964. After the enactment of Mutually aided cooperative societies act 1995 the cooperative transitioned under this new enactment.
+                            Mulkanoor cooperative rural bank was established in 1956 by esteemed visionary founder Late sri AligiReddy Kasi Vishwanatha Reddy with the primary objective of uplifting socio-economic status of farmers. The society was initially registered under the Hyderabad cooperative societies act 1952. later, automatically deemed into A.P cooperative societies act 1964. After the enactment of Mutually aided cooperative societies act 1995 the cooperative transitioned under this new enactment.
                         </p>
                         <p>
                             The cooperative operates in its catchment of 14 revenue villages with a total of 18 gram panchayats. These villages then were in the drought prone region characterized by uplands and hillocks. There were conditions of lack of irrigation facilities,power supply, finance, agri-inputs, remunerative price for their produce. These situations made our ancestors build a temple of trust with a primary objective of countering these challenges and hardships faced by farmers.
@@ -1759,7 +1759,7 @@ useEffect(() => {
                 <div className="impact-highlight"  ref={impactRef}>
                     <h3>Centenary Celebration</h3> 
                     <h3>of</h3> 
-                    <h3>Kasi Vishwanatha Reddy 🎉</h3>
+                    <h3>AligiReddy Kasi Vishwanatha Reddy 🎉</h3>
                     <p>Honoring 100 years of visionary leadership (1926-2026) and celebrating 70 years of institutional excellence</p>
                 </div>
             </div>
