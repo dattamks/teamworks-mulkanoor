@@ -126,7 +126,7 @@ function Anniversary(){
             image: slider_1,   // replace with your image path
             text_1: 'Tribute to',
             text_2: 'Kasi Vishwanatha Reddy',
-            text_3: 'Celebrating the Centenary of Our Visionary Founder and 68 Years of Agricultural Excellence, Farmer Empowerment and Rural Transformation.',
+            text_3: 'Celebrating the Centenary of Our Visionary Founder and 70 Years of Agricultural Excellence, Farmer Empowerment and Rural Transformation.',
         },
         { image: slider_2 },
         { image: slider_3 },
@@ -303,7 +303,7 @@ useEffect(() => {
         },
         {
             logo:"⭐",
-            title:"68 Years",
+            title:"70 Years",
             subtitle:"Legacy of Service",
             para:"Nearly seven decades of unwavering commitment to agricultural prosperity."
         }
@@ -977,7 +977,7 @@ useEffect(() => {
                 `
                 #hero{
                     width:100%;
-                    height:700px;
+                    height:630px;
                     position:relative;
                 }
                 .overlay{
@@ -992,7 +992,7 @@ useEffect(() => {
                 .slider{
                     width:100%;
                     overflow:hidden;
-                    height:700px;
+                    height:630px;
                 }
                 .slider-wrapper{
                     width:100%;
@@ -1198,7 +1198,7 @@ useEffect(() => {
 
 
                         <p className='animate-rightleft'>{slides[current].text_3}</p>
-                        <button className='animate-downup'>68 Years of Imapact</button>
+                        <button className='animate-downup'>70 Years of Imapact</button>
                     </div>
                     : ''}
                 </div>
@@ -1737,7 +1737,7 @@ useEffect(() => {
             <div className="container">
                 <h2 className="heading" style={{color:"white"}}>Our Impact Today</h2>
                 <p className="subheading" style={{color:"#ffbf00"}}>
-                    Transforming Rural Telangana for 68 Years
+                    Transforming Rural Telangana for 70 Years
                 </p>
                 <div className="impact-list">
                     <div className='impact-box-1'>
@@ -1759,8 +1759,8 @@ useEffect(() => {
                 <div className="impact-highlight"  ref={impactRef}>
                     <h3>Centenary Celebration</h3> 
                     <h3>of</h3> 
-                    <h3>AligiReddy Vishwanath Reddy 🎉</h3>
-                    <p>Honoring 100 years of visionary leadership (1926-2026) and celebrating 68 years of institutional excellence</p>
+                    <h3>Kasi Vishwanatha Reddy 🎉</h3>
+                    <p>Honoring 100 years of visionary leadership (1926-2026) and celebrating 70 years of institutional excellence</p>
                 </div>
             </div>
         </section>
