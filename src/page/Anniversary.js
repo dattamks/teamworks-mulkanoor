@@ -706,6 +706,11 @@ useEffect(() => {
   }, []);
  const slideWidth = 100 / visibleSlide; // width of one slide in %
 
+   const audioRef = useRef(null);
+
+  const playAudio = () => {
+    audioRef.current.play();
+  };
 
     return(
         <>
@@ -1275,6 +1280,23 @@ useEffect(() => {
                         <p>
                             Initially founded with 373 members and a share capital of RS 2300/- today society is 7629 active members strong with share capital of 17.96 crores and thrift deposits of 45.90 crores creating impact in the lives of 35000-40000 people. The present admission number of the society is 14908. The annual turnover is around 352 crores which displays the humongous success achieved and much more to come along. The society initially started operating from the founders' residence for 14 years until it moved to its own office premise in 1970.
                         </p>
+                         <button onClick={playAudio}  style={{
+                            display: "inline-block",
+                            padding: "10px 30px",
+                            background: "linear-gradient(to left, #0b4e24, #db500b)",
+                            color: "white",
+                            fontWeight: "bold",
+                            textDecoration: "none",
+                            borderRadius: "5px",
+                            border: "none",
+                            cursor: "pointer",
+                            transition: "transform 0.3s ease, box-shadow 0.3s ease"
+                        }}> Vision Voice</button>
+
+                            <audio
+                                ref={audioRef}
+                                src="https://mcrcms.coop/1-Burra%20Katha.mp3"
+                            />
                     </div>
                 </div>
             </div>
