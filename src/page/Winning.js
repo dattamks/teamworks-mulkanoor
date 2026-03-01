@@ -204,7 +204,7 @@ const Winning = () => {
                     {/* Stats Row */}
                     { <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-3xl mx-auto">
                         {[
-                            { number: "69+", label: "Years of Success" },
+                            { number: "70", label: "Years of Success" },
                             { number: "15000+", label: "Farmers Empowered" },
                             { number: "₹220Cr", label: "Credit Facilitated" },
                             { number: "1400cr", label: "Turnover" }

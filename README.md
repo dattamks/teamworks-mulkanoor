@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# Mulkanoor Cooperative Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Official React website for **Mulkanoor Cooperative Society**, featuring content across discovery, products, farmer support pillars, media, and organization information.
+
+## Tech Stack
+
+- React 18 (Create React App)
+- React Router (`react-router-dom`)
+- Tailwind CSS
+- Framer Motion (UI animations)
+- React Helmet Async (SEO/meta tags)
+- Recharts + D3 (data/visual components)
+
+## Project Structure
+
+Main application code is in `src/`:
+
+- `src/App.js` – application routing and shared layout
+- `src/page/` – page-level route components
+- `src/components/` – reusable UI components
+- `src/data/` – shared static data (including search index)
+- `src/hooks/` – custom hooks (route loading, viewport, etc.)
+- `src/assets/` – media and static visual resources
+
+## Route Groups (high level)
+
+- `/` – Home
+- `/discover/*` – Story, Mission, Leadership, Milestones, Endorsed, Organization
+- `/product/*` – Product, Rice, Paddy, Cotton
+- `/pillars/*` – Financial, Agri Inputs, Extension, Values, Insurance, Welfare
+- `/media/*` – Videos, Gallery, Articles, Paper
+- Other pages: `/awards`, `/farmer`, `/winning`, `/marketing`, `/processing`, `/consumer`, `/contact`, `/cta`, `/report`, `/anniversary`
+
+## Getting Started
+
+### 1) Install dependencies
+
+```bash
+npm install
+```
+
+### 2) Start development server
+
+```bash
+npm start
+```
+
+App runs at `http://localhost:3000`.
 
 ## Available Scripts
 
-In the project directory, you can run:
+- `npm start` – run in development mode
+- `npm run build` – create production build in `build/`
+- `npm test` – run tests in watch mode
+- `npm run eject` – eject CRA config (irreversible)
 
-### `npm start`
+## Deployment
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Railway.app
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+A `railway.json` is included for one-click Railway deployment:
 
-### `npm test`
+1. Push this repo to GitHub
+2. Go to [railway.app](https://railway.app) and create a **New Project → Deploy from GitHub repo**
+3. Select this repository — Railway auto-detects `railway.json`
+4. The app will build (`CI=false npm run build`) and serve the static output on the assigned port
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The `railway.json` config uses [Nixpacks](https://nixpacks.com) builder and serves the production build with `npx serve -s build`.
 
-### `npm run build`
+### Vercel
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A `vercel.json` is also included for Vercel deployment:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Import the repo at [vercel.com](https://vercel.com)
+2. Vercel auto-detects Create React App and deploys
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Manual / Other Platforms
 
-### `npm run eject`
+```bash
+CI=false npm run build
+npx serve -s build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The `build/` folder contains the static production output ready for any hosting provider.

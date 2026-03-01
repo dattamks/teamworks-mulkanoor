@@ -92,7 +92,7 @@ const Leadership = () => {
     const leaders = [
         {
             title: "FOUNDER PRESIDENT",
-            name: "Sri A.K. Vishwanatha Reddy",
+            name: "Sri AligiReddy Kasi Vishwanatha Reddy",
             image: one,
             description: (
                 <>
@@ -101,7 +101,7 @@ const Leadership = () => {
                         Sri Aligireddy Kasi Vishwanatha Reddy was born in 1926 in Mulkanoor village, Bheemadevarapally Mandal, Karimnagar district, Telangana, India. After completing his early education in Warangal and higher studies at Osmania University, Hyderabad, he actively participated in the Indian Independence Movement and the struggle against the Nizam's rule. Recognized as a well-renowned personality, he dedicated his life post-independence to rural development and the welfare of the farmer community.
                     </p>
                     <p className="mb-6">
-                        Understanding the dire poverty and challenges faced by rural farmers, Sri A.K. Vishwanatha Reddy mobilized them towards self-reliance and collective action. On July 27, 1956, he, along with a group of visionary farmers, founded the Mulkanoor Cooperative Rural Bank. Under his leadership as President for nearly 30 years, the cooperative grew from humble beginnings into a beacon of hope for rural India. His unwavering belief in the power of cooperation transformed the lives of countless farmers and established a legacy of empowerment and community progress.
+                        Understanding the dire poverty and challenges faced by rural farmers, Sri AligiReddy Kasi Vishwanatha Reddy mobilized them towards self-reliance and collective action. On July 27, 1956, he, along with a group of visionary farmers, founded the Mulkanoor Cooperative Rural Bank. Under his leadership as President for nearly 30 years, the cooperative grew from humble beginnings into a beacon of hope for rural India. His unwavering belief in the power of cooperation transformed the lives of countless farmers and established a legacy of empowerment and community progress.
                     </p>
 
                     <h3 className="text-xl font-bold mt-6 mb-4">Contributions to Cooperative and Agricultural Development</h3>

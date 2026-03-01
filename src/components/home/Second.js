@@ -17,7 +17,7 @@ const Second = () => {
             <div className='flex items-center text-center justify-center flex-col'>
                 <h1 className='text-2xl md:text-5xl'>Mulkanoor Cooperative Ecosystem</h1>
                 <p className='text-sm md:text-lg w-full md:w-1/2 mt-4 md:mt-5 px-2'>
-                    For 69+ years, Mulkanoor Coop has transformed into a holistic network of solutions, resources, and assistance for farmers, championing equity, openness, and sustainable development.
+                    For 70 years, Mulkanoor Coop has transformed into a holistic network of solutions, resources, and assistance for farmers, championing equity, openness, and sustainable development.
                 </p>
                 
                 <div className='grid  grid-cols-2 md:grid-cols-4 gap-4 w-full mt-6 md:mt-8'>

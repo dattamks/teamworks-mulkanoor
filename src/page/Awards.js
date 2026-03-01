@@ -75,75 +75,86 @@ const Awards = () => {
         ]
     };
 
+    // Awards ordered chronologically: oldest to newest
     const awards = [
         {
-            title: "Manager of the year",
-            presenter: "Hyderabad management association",
-            description: " Best management and outstanding achievements as president of mulkanoor cooperative society.",
+            title: "Manager of the Year",
+            presenter: "Hyderabad Management Association",
+            description: "Best management and outstanding achievements as president of Mulkanoor Cooperative Society.",
+            year: "1981",
             image: images.awards[0]
         },
         {
-			title: "Best cooperator",
-			presenter: "AP government",
-			description: "Awarded for his outstanding contribution for cooperative sector on centenary celebrations of cooperative movement in india.",
+            title: "Best Cooperator",
+            presenter: "AP Government",
+            description: "Awarded for his outstanding contribution for cooperative sector on centenary celebrations of cooperative movement in India.",
+            year: "12-11-2004",
             image: images.awards[1]
         },
         {
-			title: " Biennial award for cooperative excellence",
-			presenter: "NCDC",
-			description: "In recognition of Society’s excellent performance and contribution to cooperative development.",
-            image: images.awards[2]
-        },
-        {
-			title: "Best primary farmers cooperative society",
-			presenter:"Outlook group",
-			description: "This award was presented owing to the best services the cooperative was able to provide its members.",
-            image: images.awards[3]
-        },
-        {
-			title: " KRIBHCO Sahakarita Vibhushan",
-			presenter: "Kribhco",
-			description: "For helping the fellow primary agriculture cooperatives.",
+            title: "KRIBHCO Sahakarita Vibhushan",
+            presenter: "Kribhco",
+            description: "For helping the fellow primary agriculture cooperatives.",
+            year: "15-09-2005",
             image: images.awards[4]
         },
         {
-			title: " Excellence in farming award",
-			presenter: "Sakshi media group",
-			description: "Sakshi excellence awards for applauding and appreciating people from different walks of life who serve society and cause a positive impact.",
-            image: images.awards[5]
-        },
-        {
-			title: " Mahadev hari alias Anna saheb gadbole memorial award",
-			presenter: "Sahakar Bharati",
-			description: "Special award in the national convention to the cooperative societies doing commendable work in the cooperative sector in memory of first working president of sahakar bharti.",
-            image: images.awards[6]
-        },
-        {
-			title: " Responsible business award",
-			presenter: "Indian achiever’s forum",
-			description: "The award is presented for outstanding professional achievement and inspiring social contributions.",
-            image: images.awards[7]
-        },
-        {
-			title: " Outstanding performer",
-			presenter: "Farm and Rural science Foundation & State agriculture university",
-			description: "In recognition of the growth and development of the rural cooperative movement.",
+            title: "Outstanding Performer – 2015",
+            presenter: "Farm and Rural Science Foundation & State Agriculture University",
+            description: "In recognition of the growth and development of the rural cooperative movement.",
+            year: "05-04-2015",
             image: images.awards[8]
         },
         {
-			title: " Leader with strategic vision- agribusiness summit",
-			presenter: "RAY consulting",
-			description: "Awarded for leaders who have done outstanding contributions to the agriculture domain.",
+            title: "Biennial Award for Cooperative Excellence – 2014",
+            presenter: "NCDC",
+            description: "In recognition of Society's excellent performance and contribution to cooperative development.",
+            year: "29-04-2015",
+            image: images.awards[2]
+        },
+        {
+            title: "Responsible Business Award",
+            presenter: "Indian Achiever's Forum",
+            description: "The award is presented for outstanding professional achievement and inspiring social contributions.",
+            year: "14-06-2019",
+            image: images.awards[7]
+        },
+        {
+            title: "Jyothirgamai Award",
+            presenter: "Association of Community Ophthalmologists of India (ACOIN – Telangana Chapter)",
+            description: "For working on the visibility problems and providing the elderly people, free cataract operations.",
+            year: "04-08-2019",
+            image: images.awards[10]
+        },
+        {
+            title: "Best Primary Farmers Cooperative Society",
+            presenter: "Outlook Group",
+            description: "This award was presented owing to the best services the cooperative was able to provide its members.",
+            year: "24-02-2020",
+            image: images.awards[3]
+        },
+        {
+            title: "Leader with Strategic Vision – Agribusiness Summit",
+            presenter: "RAY Consulting",
+            description: "Awarded for leaders who have done outstanding contributions to the agriculture domain.",
+            year: "02-09-2021",
             image: images.awards[9]
         },
         {
-			title: " Jyothirgamai award",
-			presenter: "Association of community ophthalmologists of India( ACOIN-telangana chapter)",
-			description: "For working on the visibility problems and providing the elderly people, free cataract operations.",
-            image: images.awards[10]
+            title: "Excellence in Farming Award",
+            presenter: "Sakshi Media Group",
+            description: "Sakshi excellence awards for applauding and appreciating people from different walks of life who serve society and cause a positive impact.",
+            year: "17-09-2021",
+            image: images.awards[5]
+        },
+        {
+            title: "Mahadev Hari alias Anna Saheb Gadbole Memorial Award",
+            presenter: "Sahakar Bharati",
+            description: "Special award in the national convention to the cooperative societies doing commendable work in the cooperative sector in memory of first working president of Sahakar Bharti.",
+            year: "07-12-2024",
+            image: images.awards[6]
         }
     ];
-
     const ToggleButton = () => (
         <div className="fixed bottom-8 right-8 z-50 flex gap-4">
             <button
@@ -208,7 +219,6 @@ const Awards = () => {
                                         from-black/70 via-black/30 to-transparent" />
                             <div className="absolute bottom-4 left-4 text-white">
                                 <div className="text-3xl mb-2">{award.icon}</div>
-                                <div className="text-sm font-semibold">{award.year}</div>
                             </div>
                         </div>
                         {/* Award Content */}
@@ -292,7 +302,7 @@ const Awards = () => {
 
     // Reorder views to put grid first in the ternary
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#F5F5DC] via-[#F0EBE0] to-[#E8E3D9]">
+        <div className="min-h-screen pb-20 bg-gradient-to-br from-[#F5F5DC] via-[#F0EBE0] to-[#E8E3D9]">
             <Helmet>
                 <title>Awards & Recognition - Mulkanoor Cooperative</title>
                 <meta name="description" content="Explore Mulkanoor Cooperative's awards and achievements spanning over 40 years. From Manager of the Year to Best Primary Farmers Cooperative Society, discover our journey of excellence." />

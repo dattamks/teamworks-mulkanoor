@@ -15,7 +15,7 @@ const impactMetrics = {
 const cardData = [
     {
         title: "Empowering",
-        content: "Celebrating 69+ years of services to farmers with dedication and trust.",
+        content: "Celebrating 70 years of services to farmers with dedication and trust.",
         image: card1,
     },
     {

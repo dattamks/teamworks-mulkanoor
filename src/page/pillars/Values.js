@@ -215,7 +215,7 @@ const Values = () => {
             <div className="relative">
                 <div className="absolute left-4 md:left-1/2 h-full w-0.5 bg-[#2E7D32]" />
                 {[
-                    { year: 2000, event: "Establishment of A.K. Vishwanatha Reddy Rural Development Society Ltd." },
+                    { year: 2000, event: "Establishment of AligiReddy Kasi Vishwanatha Reddy Rural Development Society Ltd." },
                     { year: 2001, event: "Launch of Junior College" },
                     { year: 2003, event: "Establishment of Degree College" },
                     { year: 2015, event: "Achieved 56% female student enrollment" }

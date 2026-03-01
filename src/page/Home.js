@@ -62,7 +62,7 @@ const Home = () => {
                 <title>Mulkanoor Cooperative Society - Empowering Farmers Since 1956</title>
                 <meta 
                     name="description" 
-                    content="For 69+ years, Mulkanoor Cooperative Society has transformed rural agriculture through sustainable development, financial inclusion, and innovative farming solutions. Serving 7,629+ members across 14 villages."
+                    content="For 70 years, Mulkanoor Cooperative Society has transformed rural agriculture through sustainable development, financial inclusion, and innovative farming solutions. Serving 7,629+ members across 14 villages."
                 />
                 <meta
                     name="keywords"

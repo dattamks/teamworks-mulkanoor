@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { QRCodeCanvas } from "qrcode.react";
 import founder from './../assets/founder-demo.jpg'
 import Founder from '../assets/ourstory/Founder.jpg';
@@ -707,9 +708,63 @@ useEffect(() => {
  const slideWidth = 100 / visibleSlide; // width of one slide in %
 
    const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audioProgress, setAudioProgress] = useState(0);
+  const [audioDuration, setAudioDuration] = useState(0);
+  const [audioCurrentTime, setAudioCurrentTime] = useState(0);
 
-  const playAudio = () => {
-    audioRef.current.play();
+  const togglePlayPause = () => {
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  const stopAudio = () => {
+    if (!audioRef.current) return;
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
+    setIsPlaying(false);
+    setAudioProgress(0);
+    setAudioCurrentTime(0);
+  };
+
+  const handleTimeUpdate = () => {
+    if (!audioRef.current) return;
+    const current = audioRef.current.currentTime;
+    const duration = audioRef.current.duration;
+    setAudioCurrentTime(current);
+    setAudioProgress(duration ? (current / duration) * 100 : 0);
+  };
+
+  const handleLoadedMetadata = () => {
+    if (audioRef.current) {
+      setAudioDuration(audioRef.current.duration);
+    }
+  };
+
+  const handleSeek = (e) => {
+    if (!audioRef.current) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const pct = x / rect.width;
+    audioRef.current.currentTime = pct * audioRef.current.duration;
+  };
+
+  const handleAudioEnded = () => {
+    setIsPlaying(false);
+    setAudioProgress(0);
+    setAudioCurrentTime(0);
+  };
+
+  const formatTime = (seconds) => {
+    if (!seconds || isNaN(seconds)) return '0:00';
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
   };
 
     return(
@@ -749,6 +804,37 @@ useEffect(() => {
           ))}
         </div>
       </div> */}
+        <style>
+            {
+                `
+                #back-to-main {
+                    background: #063d1b;
+                    padding: 8px 20px;
+                    display: flex;
+                    align-items: center;
+                }
+                #back-to-main a {
+                    color: #ffbf00;
+                    font-size: 13px;
+                    font-weight: 600;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    text-decoration: none;
+                    transition: opacity 0.2s;
+                }
+                #back-to-main a:hover {
+                    opacity: 0.85;
+                    text-decoration: underline;
+                }
+                `
+            }
+        </style>
+        <section id="back-to-main">
+            <Link to="/" style={{ color: '#ffbf00', fontSize: '13px', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '6px', textDecoration: 'none' }}>
+                <FaHome /> Back to Main Site
+            </Link>
+        </section>
         <style>
             {
                 `
@@ -1280,23 +1366,112 @@ useEffect(() => {
                         <p>
                             Initially founded with 373 members and a share capital of RS 2300/- today society is 7629 active members strong with share capital of 17.96 crores and thrift deposits of 45.90 crores creating impact in the lives of 35000-40000 people. The present admission number of the society is 14908. The annual turnover is around 352 crores which displays the humongous success achieved and much more to come along. The society initially started operating from the founders' residence for 14 years until it moved to its own office premise in 1970.
                         </p>
-                         <button onClick={playAudio}  style={{
-                            display: "inline-block",
-                            padding: "10px 30px",
-                            background: "linear-gradient(to left, #0b4e24, #db500b)",
+                        {/* Burra Katha Audio Player */}
+                        <div style={{
+                            marginTop: "24px",
+                            background: "linear-gradient(135deg, #0b4e24, #1a6b35)",
+                            borderRadius: "16px",
+                            padding: "24px",
                             color: "white",
-                            fontWeight: "bold",
-                            textDecoration: "none",
-                            borderRadius: "5px",
-                            border: "none",
-                            cursor: "pointer",
-                            transition: "transform 0.3s ease, box-shadow 0.3s ease"
-                        }}> Vision Voice</button>
+                            maxWidth: "520px"
+                        }}>
+                            <p style={{
+                                fontSize: "14px",
+                                lineHeight: "1.6",
+                                marginBottom: "16px",
+                                opacity: 0.9,
+                                fontStyle: "italic"
+                            }}>
+                                "A soulful Burra Katha that brings alive the journey, vision, and legacy of Mulkanoor Cooperative Society."
+                            </p>
+
+                            {/* Progress Bar */}
+                            <div
+                                onClick={handleSeek}
+                                style={{
+                                    width: "100%",
+                                    height: "6px",
+                                    background: "rgba(255,255,255,0.25)",
+                                    borderRadius: "3px",
+                                    cursor: "pointer",
+                                    marginBottom: "8px",
+                                    position: "relative"
+                                }}
+                            >
+                                <div style={{
+                                    width: audioProgress + "%",
+                                    height: "100%",
+                                    background: "#ffbf00",
+                                    borderRadius: "3px",
+                                    transition: "width 0.2s linear"
+                                }} />
+                            </div>
+
+                            {/* Time display */}
+                            <div style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                fontSize: "12px",
+                                opacity: 0.8,
+                                marginBottom: "14px"
+                            }}>
+                                <span>{formatTime(audioCurrentTime)}</span>
+                                <span>{formatTime(audioDuration)}</span>
+                            </div>
+
+                            {/* Controls */}
+                            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                                <button
+                                    onClick={togglePlayPause}
+                                    style={{
+                                        display: "inline-flex",
+                                        alignItems: "center",
+                                        gap: "8px",
+                                        padding: "10px 28px",
+                                        background: "linear-gradient(to right, #db500b, #ff8c42)",
+                                        color: "white",
+                                        fontWeight: "bold",
+                                        fontSize: "15px",
+                                        borderRadius: "30px",
+                                        border: "none",
+                                        cursor: "pointer",
+                                        transition: "transform 0.2s, box-shadow 0.2s"
+                                    }}
+                                    onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
+                                    onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+                                >
+                                    {isPlaying ? "⏸ Pause" : "▶ Play Now"}
+                                </button>
+                                <button
+                                    onClick={stopAudio}
+                                    style={{
+                                        display: "inline-flex",
+                                        alignItems: "center",
+                                        padding: "10px 20px",
+                                        background: "rgba(255,255,255,0.15)",
+                                        color: "white",
+                                        fontWeight: "bold",
+                                        fontSize: "15px",
+                                        borderRadius: "30px",
+                                        border: "1px solid rgba(255,255,255,0.3)",
+                                        cursor: "pointer",
+                                        transition: "background 0.2s"
+                                    }}
+                                    onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.25)"}
+                                    onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.15)"}
+                                >
+                                    ⏹ Stop
+                                </button>
+                            </div>
 
                             <audio
                                 ref={audioRef}
                                 src="https://mcrcms.coop/1-Burra%20Katha.mp3"
+                                onTimeUpdate={handleTimeUpdate}
+                                onLoadedMetadata={handleLoadedMetadata}
+                                onEnded={handleAudioEnded}
                             />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2439,11 +2614,12 @@ useEffect(() => {
                     font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
                 }
                 .footer-item{
-                    align-items: center;
+                    align-items: flex-start;
                     display: flex;
                     flex-direction: column;
                     border-bottom:2px solid white;
                     padding-bottom:10px;
+                    text-align: left;
                 }
                 
                 .footer-item p{
@@ -2454,6 +2630,7 @@ useEffect(() => {
                 .footer-list{
                     display:flex;
                     flex-wrap:wrap;
+                    text-align: left;
                 }
                 .footer-box:nth-child(1){
                     flex:1 1 45%;

@@ -30,11 +30,11 @@ const Storys = () => {
         <title>Our Story - Mulkanoor Cooperative Society | Since 1956</title>
         <meta 
           name="description" 
-          content="Discover the inspiring journey of Mulkanoor Cooperative Society, from its founding in 1956 by Sri A.K. Vishwanatha Reddy to becoming a ₹270.18 crore organization serving 7,629 members across 14 villages."
+          content="Discover the inspiring journey of Mulkanoor Cooperative Society, from its founding in 1956 by Sri AligiReddy Kasi Vishwanatha Reddy to becoming a ₹270.18 crore organization serving 7,629 members across 14 villages."
         />
         <meta
           name="keywords"
-          content="Mulkanoor history, A.K. Vishwanatha Reddy, cooperative journey, rural development, agricultural cooperative, farmer empowerment"
+          content="Mulkanoor history, AligiReddy Kasi Vishwanatha Reddy, cooperative journey, rural development, agricultural cooperative, farmer empowerment"
         />
         <meta 
           property="og:title" 
@@ -52,7 +52,7 @@ const Storys = () => {
             "foundingDate": "1956",
             "founder": {
               "@type": "Person",
-              "name": "Sri A.K. Vishwanatha Reddy",
+              "name": "Sri AligiReddy Kasi Vishwanatha Reddy",
               "jobTitle": "Founder",
               "image": Founder
             },
@@ -112,11 +112,11 @@ const Storys = () => {
             <div className="relative rounded-xl overflow-hidden w-full sm:w-[80%] md:w-[60%] lg:w-[50%] max-w-md">
               <img
                 src={Founder}
-                alt="Founder A.K. Vishwanatha Reddy"
+                alt="Founder AligiReddy Kasi Vishwanatha Reddy"
                 className="w-full h-auto object-cover aspect-[4/5]"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-3 md:p-4">
-                <p className="text-xs md:text-sm cursor-default text-center">Late Sri A.K. Vishwanatha Reddy, Our Founder</p>
+                <p className="text-xs md:text-sm cursor-default text-center">Late Sri AligiReddy Kasi Vishwanatha Reddy, Our Founder</p>
               </div>
             </div>
           </div>
@@ -125,7 +125,7 @@ const Storys = () => {
             <h2 className="text-2xl md:text-3xl cursor-default font-bold mb-6 md:mb-8 text-center text-earth-500">Our Journey</h2>
             <div className="space-y-4 md:space-y-6 text-sm md:text-base">
               <p className="leading-relaxed cursor-default">
-                Mulkanoor cooperative rural bank was established in 1956 by esteemed visionary founder Late sri A.K Vishwanatha Reddy with the primary objective of uplifting socio-economic status of farmers. The society was initially registered under the Hyderabad cooperative societies act 1952. later, automatically deemed into A.P cooperative societies act 1964. After the enactment of Mutually aided cooperative societies act 1995 the cooperative transitioned under this new enactment.
+                Mulkanoor cooperative rural bank was established in 1956 by esteemed visionary founder Late Sri AligiReddy Kasi Vishwanatha Reddy with the primary objective of uplifting socio-economic status of farmers. The society was initially registered under the Hyderabad cooperative societies act 1952. later, automatically deemed into A.P cooperative societies act 1964. After the enactment of Mutually aided cooperative societies act 1995 the cooperative transitioned under this new enactment.
               </p>
               <p className="leading-relaxed cursor-default">
                 The cooperative operates in its catchment of 14 revenue villages with a total of 18 gram panchayats. These villages then were in the drought prone region characterized by uplands and hillocks. There were conditions of lack of irrigation facilities,power supply, finance, agri-inputs, remunerative price for their produce. These situations made our ancestors build a temple of trust with a primary objective of countering these challenges and hardships faced by farmers.
