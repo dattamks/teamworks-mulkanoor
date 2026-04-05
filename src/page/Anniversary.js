@@ -87,6 +87,9 @@ import award4 from '../assets/awards/4.JPG'
 import award5 from '../assets/awards/5.jpg'
 import award6 from '../assets/awards/6.jpeg'
 import award7 from '../assets/awards/7.jpeg'
+import award8 from '../assets/awards/8.jpg'
+import award9 from '../assets/awards/9.JPG'
+import award10 from '../assets/awards/10.jpeg'
 import award11 from '../assets/awards/11.JPG'
 import { interactionTargetMap } from 'web-vitals/attribution/onINP.js';
 
@@ -126,7 +129,7 @@ function Anniversary(){
         {
             image: slider_1,   // replace with your image path
             text_1: 'Tribute to',
-            text_2: 'Kasi Vishwanatha Reddy',
+            text_2: 'AligiReddy Kasi Vishwanatha Reddy',
             text_3: 'Celebrating the Centenary of Our Visionary Founder and 70 Years of Agricultural Excellence, Farmer Empowerment and Rural Transformation.',
         },
         { image: slider_2 },
@@ -623,55 +626,91 @@ useEffect(() => {
     },[hyearActiveIndex])
     const awards = [
         {
-            img:award4,
-            name:"Best Primary Farmers Cooperative Society",
-            year:2023,
-            type:"Excellence"
+            img: award1,
+            title: "Manager of the Year",
+            presenter: "Hyderabad Management Association",
+            description: "Best management and outstanding achievements as president of Mulkanoor Cooperative Society.",
+            year: "1981"
         },
         {
-            img:award11,
-            name:"Jyothirgamai Award",
-            year:2022,
-            type:"Leadership"
+            img: award2,
+            title: "Best Cooperator",
+            presenter: "AP Government",
+            description: "Awarded for his outstanding contribution for cooperative sector on centenary celebrations of cooperative movement in India.",
+            year: "12-11-2004"
         },
         {
-            img:award3,
-            name:"NCDC National Award for Cooperative Excellence",
-            year:2021,
-            type:"National"
+            img: award5,
+            title: "KRIBHCO Sahakarita Vibhushan",
+            presenter: "Kribhco",
+            description: "For helping the fellow primary agriculture cooperatives.",
+            year: "15-09-2005"
         },
         {
-            img:award1,
-            name:"Manager of the Year",
-            year:2020,
-            type:"Leadership"
+            img: award9,
+            title: "Outstanding Performer - 2015",
+            presenter: "Farm and Rural Science Foundation & State Agriculture University",
+            description: "In recognition of the growth and development of the rural cooperative movement.",
+            year: "05-04-2015"
         },
         {
-            img:award2,
-            name:"Best Cooperator Award",
-            year:2019,
-            type:"Special Recognition"
+            img: award3,
+            title: "Biennial Award for Cooperative Excellence - 2014",
+            presenter: "NCDC",
+            description: "In recognition of Society's excellent performance and contribution to cooperative development.",
+            year: "29-04-2015"
         },
         {
-            img:award5,
-            name:"Sahakaritha Vibhusan Award",
-            year:2018,
-            type:"Excellence"
+            img: award8,
+            title: "Responsible Business Award",
+            presenter: "Indian Achiever's Forum",
+            description: "Presented for outstanding professional achievement and inspiring social contributions.",
+            year: "14-06-2019"
         },
         {
-            img:award6,
-            name:"Sakshi Excellence Award",
-            year:2017,
-            type:"Media Recognition"
+            img: award11,
+            title: "Jyothirgamai Award",
+            presenter: "Association of Community Ophthalmologists of India (ACOIN - Telangana Chapter)",
+            description: "For working on visibility problems and providing free cataract operations to elderly people.",
+            year: "04-08-2019"
         },
         {
-            img:award7,
-            name:"SahakaraBharathi - Annasaheb Godbole Memorial Award",
-            year:2016,
-            type:"Memorial"
+            img: award4,
+            title: "Best Primary Farmers Cooperative Society",
+            presenter: "Outlook Group",
+            description: "Presented for exceptional services delivered to cooperative members.",
+            year: "24-02-2020"
+        },
+        {
+            img: award10,
+            title: "Leader with Strategic Vision - Agribusiness Summit",
+            presenter: "RAY Consulting",
+            description: "Recognized for outstanding strategic contributions to the agriculture domain.",
+            year: "02-09-2021"
+        },
+        {
+            img: award6,
+            title: "Excellence in Farming Award",
+            presenter: "Sakshi Media Group",
+            description: "Honors impactful contributors from diverse walks of life serving society.",
+            year: "17-09-2021"
+        },
+        {
+            img: award7,
+            title: "Mahadev Hari alias Anna Saheb Gadbole Memorial Award",
+            presenter: "Sahakar Bharati",
+            description: "Special national recognition for commendable work in the cooperative sector.",
+            year: "07-12-2024"
         }
-        
-    ]
+    ];
+
+    const extractAwardYear = (value) => {
+        const text = String(value || '').trim();
+        const match = text.match(/(\d{4})/);
+        return match ? Number(match[1]) : 0;
+    };
+
+    const awardSlides = [...awards].sort((a, b) => extractAwardYear(a.year) - extractAwardYear(b.year));
   const [awardIndex, setAwardIndex] = useState(0);
   const [visibleSlide, setVisbleSlide] = useState(2)
     const handleResize = () => {
@@ -699,12 +738,12 @@ useEffect(() => {
   useEffect(() => {
     const timer = setInterval(() => {
       setAwardIndex(prev =>
-        prev >= awards.length - visibleSlide ? 0 : prev + 1
+                prev >= awardSlides.length - visibleSlide ? 0 : prev + 1
       );
     }, 3000); // Auto slide every 3 seconds
 
     return () => clearInterval(timer);
-  }, []);
+    }, [visibleSlide, awardSlides.length]);
  const slideWidth = 100 / visibleSlide; // width of one slide in %
 
    const audioRef = useRef(null);
@@ -2424,13 +2463,20 @@ useEffect(() => {
                     background:white;
                     border:1px solid #b9dbc5;
                     text-align:left;
+                    border-radius:10px;
+                    overflow:hidden;
                 }
                 .head{
                     display:flex;
                     flex-wrap:wrap;
                     justify-content:space-between;
                     position:relative;
-                    height:400px;
+                    height:300px;
+                }
+                .head img{
+                    width:100%;
+                    height:100%;
+                    object-fit:cover;
                 }
                 .top-left{
                     position:absolute;
@@ -2452,22 +2498,45 @@ useEffect(() => {
                     text-align:center;
                     margin-left:1%;
                     margin-right:2%;
+                    font-size:12px;
+                    white-space:nowrap;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
                 }
                 .awards-box h4{
                     text-align:center;
                     font-weight:bold;
-                    padding:10px;
+                    padding:8px 10px 6px;
                     color:#0b4e24;
                     font-size:14px;
+                }
+                .awards-description{
+                    text-align:center;
+                    color:#29322c;
+                    font-size:12px;
+                    line-height:1.45;
+                    margin:0 10px 10px;
+                    white-space:normal;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
+                    display:-webkit-box;
+                    -webkit-line-clamp:2;
+                    -webkit-box-orient:vertical;
                 }
                 @media(max-width:768px){
                     .awards-box{
                         flex: 0 0 48%;
                     }
+                    .head{
+                        height:240px;
+                    }
                 }
                 @media(max-width:425px){
                     .awards-box{
                         flex: 0 0 98%;
+                    }
+                    .head{
+                        height:220px;
                     }
                 }
                 `
@@ -2481,14 +2550,15 @@ useEffect(() => {
                     Providing end-to-end agricultural services, staying true to our core mission of farmer welfare.
                 </p>
                 <div className="awards-list" style={{ transform: `translateX(-${awardIndex * slideWidth}%)` }}>
-                    {awards.map((award,index) => (
-                    <div className="awards-box">
+                    {awardSlides.map((award, index) => (
+                    <div className="awards-box" key={index}>
                         <div className="head">
-                            <img src={award.img} alt={founder} className='founder-img'/>
-                            <div class="top-left">{award.year}</div>
-                            <div class="bottom-right">{award.type}</div>
+                            <img src={award.img} alt={award.title} className='founder-img'/>
+                            <div className="top-left">{extractAwardYear(award.year)}</div>
+                            <div className="bottom-right">{award.presenter}</div>
                         </div>
-                        <h4>{award.name}</h4>
+                        <h4>{award.title}</h4>
+                        <p className="awards-description">{award.description}</p>
                     </div>
                     ))}
                 </div>
