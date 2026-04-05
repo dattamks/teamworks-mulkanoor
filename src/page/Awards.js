@@ -155,6 +155,13 @@ const Awards = () => {
             image: images.awards[6]
         }
     ];
+
+    const getAwardYear = (value) => {
+        const text = String(value || '').trim();
+        const match = text.match(/(\d{4})/);
+        return match ? match[1] : text;
+    };
+
     const ToggleButton = () => (
         <div className="fixed bottom-8 right-8 z-50 flex gap-4">
             <button
@@ -225,7 +232,7 @@ const Awards = () => {
                         <div className="p-6">
                             <div className="inline-block px-3 py-1 bg-[#C8AD7F]/20 rounded-full text-sm 
                                         text-[#8B7355] font-semibold mb-4">
-                                {award.year}
+                                {getAwardYear(award.year)}
                             </div>
                             <h3 className="text-xl font-bold text-[#4A3F35] mb-3"><span class="font-bold">Award:</span>{award.title}</h3>
                             <div className="space-y-2">
@@ -276,7 +283,7 @@ const Awards = () => {
                                     <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-8">
                                         <div className="text-6xl mb-6">{award.icon}</div>
                                         <h3 className="text-2xl font-bold mb-2 text-center">{award.title}</h3>
-                                        <p className="text-lg text-center mb-2">{award.year}</p>
+                                        <p className="text-lg text-center mb-2">{getAwardYear(award.year)}</p>
                                         <div className="w-16 h-1 bg-white/50 rounded-full mb-4"></div>
                                         <p className="text-center text-white/90">{award.recipient}</p>
                                     </div>
@@ -378,7 +385,7 @@ const Awards = () => {
                                             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg 
                                             border border-[#C8AD7F]/20 hover:shadow-2xl transition-all duration-300
                                             transform hover:scale-105">
-                                                <div className="text-sm text-[#8B7355] font-semibold mb-2">{award.year}</div>
+                                                <div className="text-sm text-[#8B7355] font-semibold mb-2">{getAwardYear(award.year)}</div>
                                                 <h3 className="text-xl cursor-default font-bold text-[#4A3F35] mb-2">{award.title}</h3>
                                                 <p className="text-[#8B7355] cursor-default font-medium mb-2">Awarded to: {award.recipient}</p>
                                                 <p className="text-[#8B7355] cursor-default text-sm mb-2">By: {award.organization}</p>
