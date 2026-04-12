@@ -713,6 +713,7 @@ useEffect(() => {
     const awardSlides = [...awards].sort((a, b) => extractAwardYear(a.year) - extractAwardYear(b.year));
   const [awardIndex, setAwardIndex] = useState(0);
   const [visibleSlide, setVisbleSlide] = useState(2)
+    const [isAwardsPaused, setIsAwardsPaused] = useState(false);
     const handleResize = () => {
         const width = window.innerWidth;
         // if(width < 768){
@@ -735,7 +736,16 @@ useEffect(() => {
     return () => window.removeEventListener("resize", handleResize);
     }, []); // only once for resize listener
 
+    const maxAwardIndex = Math.max(awardSlides.length - visibleSlide, 0);
+    const awardDotCount = maxAwardIndex + 1;
+
+    useEffect(() => {
+        setAwardIndex((prev) => Math.min(prev, maxAwardIndex));
+    }, [maxAwardIndex]);
+
   useEffect(() => {
+        if (isAwardsPaused) return;
+
     const timer = setInterval(() => {
       setAwardIndex(prev =>
                 prev >= awardSlides.length - visibleSlide ? 0 : prev + 1
@@ -743,8 +753,12 @@ useEffect(() => {
     }, 3000); // Auto slide every 3 seconds
 
     return () => clearInterval(timer);
-    }, [visibleSlide, awardSlides.length]);
+        }, [visibleSlide, awardSlides.length, isAwardsPaused]);
  const slideWidth = 100 / visibleSlide; // width of one slide in %
+
+    const goToAwardSlide = (index) => {
+        setAwardIndex(index);
+    };
 
    const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -2457,6 +2471,27 @@ useEffect(() => {
                     flex-wrap: nowrap;    /* prevent wrapping */
                     transition: transform 0.5s ease-in-out;
                 }
+                .awards-dots{
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                    gap:8px;
+                    margin-top:14px;
+                }
+                .awards-dot{
+                    width:10px;
+                    height:10px;
+                    border-radius:50%;
+                    border:none;
+                    background:#cfd8d3;
+                    cursor:pointer;
+                    transition:all 0.2s ease;
+                }
+                .awards-dot.active{
+                    width:24px;
+                    border-radius:999px;
+                    background:#0b4e24;
+                }
                 .awards-box{
                     flex: 0 0 48%; /* 4 slides visible at a time */
                     box-sizing: border-box;
@@ -2549,7 +2584,12 @@ useEffect(() => {
                 <p className="subheading">
                     Providing end-to-end agricultural services, staying true to our core mission of farmer welfare.
                 </p>
-                <div className="awards-list" style={{ transform: `translateX(-${awardIndex * slideWidth}%)` }}>
+                <div
+                    className="awards-list"
+                    onMouseEnter={() => setIsAwardsPaused(true)}
+                    onMouseLeave={() => setIsAwardsPaused(false)}
+                    style={{ transform: `translateX(-${awardIndex * slideWidth}%)` }}
+                >
                     {awardSlides.map((award, index) => (
                     <div className="awards-box" key={index}>
                         <div className="head">
@@ -2560,6 +2600,16 @@ useEffect(() => {
                         <h4>{award.title}</h4>
                         <p className="awards-description">{award.description}</p>
                     </div>
+                    ))}
+                </div>
+                <div className="awards-dots">
+                    {Array.from({ length: awardDotCount }).map((_, dotIndex) => (
+                        <button
+                            key={dotIndex}
+                            className={`awards-dot ${awardIndex === dotIndex ? 'active' : ''}`}
+                            onClick={() => goToAwardSlide(dotIndex)}
+                            aria-label={`Go to awards slide ${dotIndex + 1}`}
+                        ></button>
                     ))}
                 </div>
             </div>
